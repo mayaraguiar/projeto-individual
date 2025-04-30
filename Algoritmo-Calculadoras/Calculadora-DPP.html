@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPP</title>
+</head>
+
+<body>
+    Qual foi a data da última menstruação? <br>
+    <input type="number" id="input_dia" style="width: 40px;">
+    <select name="" id="select_mes">
+        <option value="1">Janeiro</option><br>
+        <option value="2">Fevereiro</option><br>
+        <option value="3">Março</option><br>
+        <option value="4">Abril</option><br>
+        <option value="5">Maio</option><br>
+        <option value="6">Junho</option><br>
+        <option value="7">Julho</option><br>
+        <option value="8">Agosto</option><br>
+        <option value="9">Setembro</option><br>
+        <option value="10">Outubro</option><br>
+        <option value="11">Novembro</option><br>
+        <option value="12">Dezembro</option><br>
+    </select>
+    <select name="" id="select_ano">
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+
+    </select>
+    <button onclick="ver()">Ver IG</button>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function ver() {
+        var dia = Number(input_dia.value);
+        var mes = Number(select_mes.value);
+        var ano = Number(select_ano.value);
+
+        var mensagem = ''
+
+
+        if (dia < 0 || dia > 31) {
+            alert('Digite um dia correto.')
+        } else {
+
+            if (mes == 2 && dia > 28) {
+                alert('O mês de fevereiro tem apenas 28 dias.')
+            } else if (mes == 4 && dia > 30) {
+                alert('O mês de Abril tem apenas 30 dias.')
+            } else if (mes == 6 && dia > 30) {
+                alert('O mês de Junho tem apenas 30 dias.')
+            } else if (mes == 9 && dia > 30) {
+                alert('O mês de Setembro tem apenas 30 dias.')
+            } else if (mes == 11 && dia > 30) {
+                alert('O mês de Março tem apenas 30 dias.')
+            }
+        } 
+        
+        var dia = (dia + 7)
+
+        if (mes <= 3) {
+            var mes = (mes + 9)
+        } else {
+            var mes = (mes - 3)
+        }
+        if (mes <= 4) {
+            var ano = (ano + 1)
+        }
+        if (mes == 1 && (dia + 7) > 31) {
+            dia = (dia + 7) - 31
+        }
+
+        div_mensagem.innerHTML = `A Data provável do parto (DPP) é ${dia}/${mes}/${ano}`
+
+
+
+    }//  if (mes >3){
+    //      var ano = (ano +1)
+    //  }
+</script>

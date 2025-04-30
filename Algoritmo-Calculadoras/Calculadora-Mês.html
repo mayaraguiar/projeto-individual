@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana-Meses</title>
+</head>
+<body>
+    Você está com quantas semanas de gestação?<br>
+    <input type="number" id="input_semanas" style="width:40px;"><br>
+
+    <button onclick="calcular()">Com quantos meses estou?</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function calcular(){
+        var semanas= Number(input_semanas.value)
+        var mensagem= ''
+
+        if (semanas <0 || semanas > 43){
+            alert ('Digite uma idade gestacional compatível')
+        } else if (semanas <=4){
+            mensagem= 'Você está com 1 mês.'
+        }else if (semanas <=8){
+            mensagem= 'Você está com 2 meses.'
+        }else if (semanas <=12){
+            mensagem= 'Você está com 3 meses.'
+        }else if (semanas <=16){
+            mensagem= 'Você está com 4 meses.'
+        }else if(semanas <=21){
+            mensagem= 'Você está com 5 meses.'
+        }else if (semanas <=26){
+            mensagem='Você está com 6 meses.'
+        }else if (semanas <=30){
+            mensagem= 'Você está com 7 meses.'
+        }else if (semanas <=35){
+            mensagem= 'Você está com 8 meses.'
+        } else if (semanas <= 42 ){
+            mensagem= 'Você está com 9 meses.'
+        }
+        div_mensagem.innerHTML= mensagem
+
+    }
+</script>
+
+
