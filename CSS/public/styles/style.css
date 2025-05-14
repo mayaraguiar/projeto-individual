@@ -16,7 +16,7 @@ body {
 
 .header{
     background-color: var(--azul);
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid --azul;
 }
 .header .container{
     display: flex;
@@ -28,8 +28,8 @@ body {
 /*Mudar fonte e colocar logo */
 .titulo{
     color:white;
-    font-family: questial;
-    background-image: url("../assets/imgs/logo.png"); 
+    font-family: playwrite;
+    
 }
 
 .navbar{
@@ -43,16 +43,36 @@ body {
     color: white;
     text-decoration: none;
 }
+
 .agora{
     font-weight: bolder;
 }
 
 /*Banner */
 .banner{
-    height: 400px;
+    height: 500px;
     width: 100;
-    background: url("../assets/imgs/bg-jelly-fish-para-home.png");
-    background-size: cover;
+    display: position;
+    position: fixed;
+
+}
+.video {
+position: relative;
+width: 100%;
+height: 80vh;
+overflow: hidden;
+padding-top: 5rem;
+}
+.homeVideo{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+    
 }
 
 .banner .container{
@@ -61,15 +81,16 @@ body {
     display: flex;
     justify-content:center;
     align-items: center ;
-}/*diminuir o coração e mudar fontes */
+    flex-direction: column;
+}
 .banner .container p {
-    width: 300px;
+    width: 490px;
     margin: 0;
     color: white;
     font-size: 24px;
     text-align: center;
-    background-image: url(../assets/imgs/Seja\ bem\ vindo.png); 
-
+    margin-left: 200%;
+    
 }
 .banner .container span{
     font-weight: bolder;
@@ -80,6 +101,7 @@ body {
 .social{
     height: 600px;
     width: 100%;
+    left: 100%;
     background-color: #dcdcdc;
 }
 .social .container{
@@ -141,7 +163,7 @@ body {
     align-items: center;
     height: 800px;
     width: 100%;
-    background-image: url(../assets/imgs/bg-jelly-fish-para-home.png );
+    background-image: url(../assets/imgs/Fundo2.png );
     background-size:cover;
 }
 
