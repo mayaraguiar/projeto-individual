@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>AquaTech | Cadastro</title>
+  <title>MIO Baby | Cadastro</title>
 
   <link rel="stylesheet" href="styles/style.css" />
-  <link rel="icon" href="assets/icon/Icon.png" />
+  <link rel="icon" href="asassets/imgs/logo(2).png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
@@ -17,7 +17,7 @@
   <!--header inicio-->
   <div class="header">
     <div class="container">
-      <h1 class="titulo">MIO Baby</h1>
+      <h5 class="titulo"><img src="assets/imgs/logo(4).png" style="width: 80%;"> </h5>
       <ul class="navbar">
         <li>
           <a href="index.html">Inicial</a>
@@ -52,12 +52,7 @@
 
               <div class="campo">
                 <span>E-mail:</span>
-                <input id="input_email" type="text" placeholder="meuemail@provedor.com" />
-              </div>
-
-              <div class="campo">
-                <span>CEP:</span>
-                <input id="input_cep" type="text" placeholder="02754000" />
+                <input id="input_email" type="text" placeholder="meu.email@email.com" />
               </div>
 
               <div class="campo">
@@ -67,7 +62,7 @@
 
               <div class="campo">
                 <span>Categoria:</span>
-                <input id="input_categoria" type="text" placeholder="594602" />
+                <input id="input_categoria" type="text" placeholder="Médico/Enfermeiro" />
               </div>
 
               <div class="campo">
@@ -100,7 +95,6 @@ function cadastrar() {
 
   var nome = nome_input.value;
   var email = input_email.value;
-  var cep = input_cep.value;
   var cel = celular_input.value;
   var categoria= input_categoria;
   var senha = senha_input.value;
@@ -111,12 +105,13 @@ function cadastrar() {
   var validar = true;
 
   //verifica se todos os campos estão preenchidos
-  if (nome == '' || email == '' || cep == '' || cel == '' || senha == '' || confir == '' ||categoria=='') {
+  if (nome == '' || email == '' || cel == '' || senha == '' || confir == '' ||categoria=='') {
     Toastify({
       text: "Todos os campos devem ser preenchidos",
       duration: 3000,
       style: {
         background: "linear-gradient(to right, #ac2121, #d62424)",
+
       },
     }).showToast();
     return;
@@ -154,29 +149,6 @@ function cadastrar() {
     }).showToast();
     validar = false; 
   }
-
-    if (categoria < 6 || isNaN(categoria)) {
-    Toastify({
-      text: "Número da categoria inválido",
-      duration: 3000,
-      style: {
-        background: "linear-gradient(to right, #ac2121, #d62424)",
-      },
-    }).showToast();
-    validar = false; 
-  }
-
-  if (cep.length != 8 || isNaN(cep)) {
-    Toastify({
-      text: "CEP inválido",
-      duration: 3000,
-      style: {
-        background: "linear-gradient(to right, #ac2121, #d62424)",
-      },
-    }).showToast();
-    validar = false; 
-  }
-
   //valida se nao for false
   if (validar) {
     window.location.href = "dashboard.html";
@@ -186,16 +158,6 @@ function cadastrar() {
 
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  <!--footer inicio-->
-  <div class="footer">
-    <div class="container">
-      <ul class="icons-footer">
-            <li><a href="https://github.com/mayaraguiar"><img src="assets/imgs/github.png" alt=""></a></li>
-        </ul>
-      <h4>MIO baby 2025 | Todos os direitos reservados 2025</h4>
-    </div>
-  </div>
-  <!--footer fim-->
 </body>
 
 </html>
