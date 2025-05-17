@@ -19,13 +19,13 @@ body {
 
 /*herder*/
 .header {
-  position: fixed;
+
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
   transition: top 0.3s ease;
-  background-color: transparent ;
+  background-color: var(--azul) ;
 }
 .header .container{
     display: flex;
@@ -34,14 +34,6 @@ body {
     padding: 0 50px;
 
 }
-/* .header .container1{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 50px;
-
-} */
-
 .titulo{
     color:white;
     font-family: 'Pacifico',cursive;
@@ -78,7 +70,7 @@ body {
 .video {
 position: relative;
 width: 100%;
-height: 100vh;
+height: 83vh;
 overflow: hidden;
 z-index: 0;
 }
@@ -196,8 +188,8 @@ z-index: 0;
     align-items: center;
     height: 635px;
     width: 100%;
-    background-image: url(../assets/imgs/Fundo.png );
-    background-size:cover;
+    background-image: url(../assets/imgs/fundo3.png );
+    background-size:contain;
 }
 
 .card{

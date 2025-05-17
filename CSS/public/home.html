@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MIO Baby | Home</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="assets/imgs/logo(2).png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+
+    <!--header inicio-->
+    <div class="header">
+        <div class="container">
+      <h5 class="titulo"><img src="assets/imgs/logo(4).png" style="width: 80%;"> </h5>
+            <ul class="navbar">
+                <li>
+                    <a href="./index.html">Inicial</a>
+                </li>
+                <li class="agora">
+                    <a href="#">Consulta</a> Consulta
+                </li>
+                <li>|</li>
+                <li>
+                    <a href="./login.html">Cadastro Paciente</a> 
+                </li>
+                <li>
+                    <a href="./cadastro.html">Cadastro </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- simulador inicio -->
+<div class="simulador">
+        <div class="container">
+            <div class="card card-simulador">
+                <div class="formulario">
+                    <h1>Calculador de DPP</h1>
+                    <div class="campo">
+                    Qual foi a data da última menstruação? <br>
+                        <input type="number" id="input_dum" placeholder="0">
+                    </div>
+                    <div class="campo">
+                        Em média, quantas ostras cada instalação possui? <br>
+                        <input type="number" id="input_qtdOstras" placeholder="0">
+                    </div>
+                    <div class="campo">
+                        Aproximadamente, quantos quilogramas de pérola é extraído por colheita? <br>
+                        <input type="number" id="input_kg" placeholder="0">
+                    </div>
+                    <div class="campo">
+                        Qual o preço do quilograma de pérola?
+                        <input type="number" id="input_precokg" placeholder="0">
+                    </div>
+                    <button onclick="simular()" class="botao">Simular</button>
+                </div>
+                <div id="div_mensagem" class="texto"></div>
+            </div>
+        </div>
+    </div>
+    <!-- simulador fim -->
+
+  <!--footer inicio-->
+  <div class="footer">
+    <div class="container">
+      <ul class="icons-footer">
+            <li><a href="https://github.com/mayaraguiar"><img src="assets/imgs/github.png" alt=""></a></li>
+        </ul>
+      <h4>MIO baby 2025 | Todos os direitos reservados 2025</h4>
+    </div>
+  </div>
+  <!--footer fim-->
+</body>
+
+</html>
