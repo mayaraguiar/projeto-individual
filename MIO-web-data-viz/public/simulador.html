@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>MIO Baby | Simulador</title>
 
     <script src="./js/sessao.js"></script>
@@ -20,56 +19,145 @@
     <!--header inicio-->
     <div class="header">
         <div class="container">
-      <h5 class="titulo"><img src="assets/imgs/logo(4).png" style="width: 80%;"> </h5>
+            <h5 class="titulo"><img src="assets/imgs/logo(4).png" style="width: 80%;"> </h5>
             <ul class="navbar">
-                <li>
-                    <a href="./index.html">Inicial</a>
-                </li>
+                <li><a href="./index.html">Inicial</a></li>
                 <li class="agora">Calculadora</li>
                 <li>|</li>
-                <li>
-                    <a href="./login.html">Entrar</a>
-                </li>
-                <li>
-                    <a href="./login.html">Cadastro</a>
-                </li>
+                <li><a href="./login.html">Entrar</a></li>
+                <li><a href="./login.html">Cadastro</a></li>
             </ul>
         </div>
     </div>
 
-
-    <!-- simulador inicio -->
+    <!-- simulador início -->
     <div class="simulador">
         <div class="container">
-            <h2>Simulador</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium tempora architecto sint fugit
-                dolorum? Ipsum laborum magnam similique labore, voluptate amet reprehenderit rem ab blanditiis quisquam
-                laboriosam eaque alias. Reiciendis. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Accusantium tempora architecto sint fugit dolorum? Ipsum laborum magnam similique labore, voluptate amet
-                reprehenderit rem ab blanditiis quisquam laboriosam eaque alias. Reiciendis.</p>
+
+            <!-- Primeira calculadora -->
+            <div class="card card-simulador">
+                <h2>Calculadora Data Provável do Parto</h2>
+                <div class="formulario">
+
+                    <div class="campo">
+                        <span>Qual foi a data da última menstruação?</span>
+                        <input type="number" id="input_dia" style="width: 40px;">
+                    </div>
+
+                    <div class="campo">
+                        <select id="select_mes">
+                            <option value="1">Janeiro</option>
+                            <option value="2">Fevereiro</option>
+                            <option value="3">Março</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Maio</option>
+                            <option value="6">Junho</option>
+                            <option value="7">Julho</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Setembro</option>
+                            <option value="10">Outubro</option>
+                            <option value="11">Novembro</option>
+                            <option value="12">Dezembro</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <select id="select_ano">
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                        </select>
+                        <button class="botao" onclick="ver()">Ver IG</button>
+                    </div>
+                </div id="div_mensagem" class="mensagem" style="margin-top: 20px;">
+            </div>
+
+            <!-- Segunda calculadora -->
+            <div class="card card-simulador">
+                <h2>Conversor de semanas para meses</h2>
+                <div class="formulario">
+                    <div class="campo">
+                        <span>Você está com quantas semanas de gestação?</span>
+                        <input type="number" id="input_semanas" style="width:40px;"><br>
+                    </div>
+                    <button class="botao" onclick="calcular()">Calcular</button>
+                    <div id="div_mensagem" class="mensagem" style="margin-top: 20px;"></div>
+                </div>
+            </div>
+
+            <!-- Resultado das mensagens -->
+             
 
         </div>
     </div>
     <!-- simulador fim -->
 
+<script>
+    function ver() {
+        var div_mensagem = document.getElementById('div_mensagem');
 
+        var dia = Number(input_dia.value);
+        var mes = Number(select_mes.value);
+        var ano = Number(select_ano.value);
 
+        if (!dia || !mes || !ano) {
+            alert('Preencha todos os campos corretamente.');
+            return;
+        }
 
+        var diasNoMes = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+
+        dia += 7;
+
+        if (dia > diasNoMes[mes - 1]) {
+            dia -= diasNoMes[mes - 1];
+            mes += 1;
+        }
+
+        if (mes <= 3) {
+            mes += 9;
+        } else {
+            mes -= 3;
+            ano += 1;
+        }
+
+        var nomeMes = meses[mes - 1];
+
+        div_mensagem.innerHTML = `A data provável do parto (DPP) é <strong>${dia} de ${nomeMes} de ${ano}</strong>.`;
+    }
+
+    function calcular() {
+
+        var semanas = Number(input_semanas.value);
+        var mensagem = '';
+
+        if (semanas < 0 || semanas > 43) {
+            alert('Digite uma idade gestacional compatível.');
+
+        } else if (semanas <= 4) {
+            mensagem = 'Você está com 1 mês.';
+        } else if (semanas <= 8) {
+            mensagem = 'Você está com 2 meses.';
+        } else if (semanas <= 12) {
+            mensagem = 'Você está com 3 meses.';
+        } else if (semanas <= 16) {
+            mensagem = 'Você está com 4 meses.';
+        } else if (semanas <= 21) {
+            mensagem = 'Você está com 5 meses.';
+        } else if (semanas <= 26) {
+            mensagem = 'Você está com 6 meses.';
+        } else if (semanas <= 30) {
+            mensagem = 'Você está com 7 meses.';
+        } else if (semanas <= 35) {
+            mensagem = 'Você está com 8 meses.';
+        } else if (semanas <= 42) {
+            mensagem = 'Você está com 9 meses.';
+        }
+        
+
+        div_mensagem.innerHTML = `${mensagem}`;
+    }
+</script>
 </body>
 
 </html>

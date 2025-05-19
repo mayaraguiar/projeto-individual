@@ -234,7 +234,7 @@ z-index: 0;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: var(--escuro);
   flex-direction: column;
   height: fit-content;
   padding: 20px 0;
@@ -381,15 +381,35 @@ input {
 }
 
 /* SIMULADOR */
-
 .simulador {
-  color: white;
+  height: var(--tamanho-login);
+  background-image: url(../assets/imgs/tela-branca.png );
+  background-size: cover;
+   
 }
 
+
 .simulador .container {
-  flex-direction: column;
-  overflow: scroll; 
-  height: var(--tamanho-simulador);
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+      background-image: url(../assets/imgs/fundo3.png );
+          background-size:contain;
+}
+
+.card-simulador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 30px;
+    backdrop-filter: blur(-100px);
+    background: white(245, 242, 242, 0.86); 
+    border-radius: 12px;
+    gap: 20px;
+    width: 550px;
+
+
 }
 
 /* ALERTA */
