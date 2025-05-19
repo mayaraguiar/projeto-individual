@@ -1,85 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DPP</title>
+  <meta charset="UTF-8">
+  <title>Calculadora de DPP</title>
 </head>
-
 <body>
-    Qual foi a data da última menstruação? <br>
-    <input type="number" id="input_dia" style="width: 40px;">
-    <select name="" id="select_mes">
-        <option value="1">Janeiro</option><br>
-        <option value="2">Fevereiro</option><br>
-        <option value="3">Março</option><br>
-        <option value="4">Abril</option><br>
-        <option value="5">Maio</option><br>
-        <option value="6">Junho</option><br>
-        <option value="7">Julho</option><br>
-        <option value="8">Agosto</option><br>
-        <option value="9">Setembro</option><br>
-        <option value="10">Outubro</option><br>
-        <option value="11">Novembro</option><br>
-        <option value="12">Dezembro</option><br>
-    </select>
-    <select name="" id="select_ano">
-        <option value="2024">2024</option>
-        <option value="2025">2025</option>
 
-    </select>
-    <button onclick="ver()">Ver IG</button>
+  <h2>Calculadora da Data Provável do Parto (Regra de Naegele)</h2>
 
-    <div id="div_mensagem"></div>
+  <label>DUM - Dia: <input type="number" id="dia" min="1" max="31"></label><br>
+  <label>Mês (1-12): <input type="number" id="mes" min="1" max="12"></label><br>
+  <label>Ano: <input type="number" id="ano" min="1900"></label><br><br>
+
+  <button onclick="calcular()">Calcular DPP</button>
+
+  <h3 id="resultado"></h3>
+
+  <script>
+    function calcular() {
+      var dia = parseInt(document.getElementById("dia").value);
+      var mes = parseInt(document.getElementById("mes").value);
+      var ano = parseInt(document.getElementById("ano").value);
+
+      // Verifica se os valores são válidos
+      if (isNaN(dia) || isNaN(mes) || isNaN(ano)) {
+        document.getElementById("resultado").textContent = "Preencha todos os campos corretamente.";
+        return;
+      }
+
+      var diasNoMes = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      var nomesMeses = ["janeiro", "fevereiro", "março", "abril", "maio", "junho",
+                        "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+
+      // Soma 7 dias
+      dia = dia + 7;
+
+      // Ajusta os dias que ultrapassam o número de dias do mês atual
+      if (mes >= 1 && mes <= 12) {
+        if (dia > diasNoMes[mes - 1]) {
+          dia = dia - diasNoMes[mes - 1];
+          mes = mes + 1;
+        }
+      }
+
+      // Soma 9 meses (Regra de Naegele)
+      mes = mes + 9;
+      if (mes > 12) {
+        mes = mes - 12;
+        ano = ano + 1;
+      }
+
+      // Ajusta se mês passou de 12 de novo por conta do dia extra
+      if (mes > 12) {
+        mes = 1;
+        ano = ano + 1;
+      }
+
+      var nomeMes = nomesMeses[mes - 1];
+
+      // Mostra resultado final
+      document.getElementById("resultado").textContent = 
+        "Data Provável do Parto (DPP): " + dia + " de " + nomeMes + " de " + ano;
+    }
+  </script>
+
 </body>
-
 </html>
-<script>
-    function ver() {
-        var dia = Number(input_dia.value);
-        var mes = Number(select_mes.value);
-        var ano = Number(select_ano.value);
-
-        var mensagem = ''
-
-
-        if (dia < 0 || dia > 31) {
-            alert('Digite um dia correto.')
-        } else {
-
-            if (mes == 2 && dia > 28) {
-                alert('O mês de fevereiro tem apenas 28 dias.')
-            } else if (mes == 4 && dia > 30) {
-                alert('O mês de Abril tem apenas 30 dias.')
-            } else if (mes == 6 && dia > 30) {
-                alert('O mês de Junho tem apenas 30 dias.')
-            } else if (mes == 9 && dia > 30) {
-                alert('O mês de Setembro tem apenas 30 dias.')
-            } else if (mes == 11 && dia > 30) {
-                alert('O mês de Março tem apenas 30 dias.')
-            }
-        } 
-        
-        var dia = (dia + 7)
-
-        if (mes <= 3) {
-            var mes = (mes + 9)
-        } else {
-            var mes = (mes - 3)
-        }
-        if (mes <= 4) {
-            var ano = (ano + 1)
-        }
-        if (mes == 1 && (dia + 7) > 31) {
-            dia = (dia + 7) - 31
-        }
-
-        div_mensagem.innerHTML = `A Data provável do parto (DPP) é ${dia}/${mes}/${ano}`
-
-
-
-    }//  if (mes >3){
-    //      var ano = (ano +1)
-    //  }
-</script>

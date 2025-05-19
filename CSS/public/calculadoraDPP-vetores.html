@@ -6,12 +6,14 @@
     <title>dpp</title>
 </head>
 <body>
+<h1>Calculadora DPP</h1>
+
     Qual foi a data da última menstruação? <br>
     <input type="number" id="input_dia" style="width: 40px;">
     <select name="" id="select_mes">
         <option value="1">Janeiro</option><br>
         <option value="2">Fevereiro</option><br>
-        <option value="3">Març+o</option><br>
+        <option value="3">Março</option><br>
         <option value="4">Abril</option><br>
         <option value="5">Maio</option><br>
         <option value="6">Junho</option><br>
@@ -32,3 +34,40 @@
     <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    function ver(){
+        var dia = Number(input_dia.value);
+        var mes = Number(select_mes.value);
+        var ano = Number(select_ano.value);
+
+        var mensagem = ''
+
+         if (dia == ''|| mes== ''||ano== '') {
+            alert('Preencha todos os campos corretamente.')
+    }
+        var diasNoMes= [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        var meses= ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+
+        dia= dia+7;
+
+        if (dia > diasNoMes[mes-1]){
+            dia= dia - diasNoMes[mes-1];
+            mes= mes + 1;
+        }
+
+        if (mes <= 3) {
+            var mes = (mes + 9);
+        } else {
+            var mes = (mes - 3);
+            ano = ano + 1;
+        }
+
+        var nomeMes = meses [mes-1]
+
+        div_mensagem.innerHTML= `A data provável do parto (DPP) é ${dia} de ${nomeMes} de ${ano}. `
+
+
+
+
+}
+</script>

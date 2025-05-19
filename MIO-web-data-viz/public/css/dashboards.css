@@ -44,7 +44,7 @@ body {
 
 .dash-right .avisos .div-form textarea {
   width: 95%;
-  border: 3px solid #e6005a;
+  border: 3px solid #6fa5ab;
   background-color: white;
   border-radius: 5px;
 }
@@ -58,7 +58,7 @@ body {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color: #e6005a;
+  background-color: #6fa5ab;
   width: 120px;
 }
 
@@ -71,7 +71,7 @@ body {
   font-size: 14px;
   padding: 5px 8px;
   color: white;
-  background-color: #e6005a;
+  background-color: #6fa5ab;
   width: 80px;
 }
 
@@ -82,7 +82,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  border-bottom: 3px solid #e6005a;
+  border-bottom: 3px solid #6fa5ab;
   padding: 20px;
 }
 
@@ -95,7 +95,7 @@ body {
 }
 
 .div-results .feed-container {
-  background-color: #212124;
+  background-color: white;
   border-radius: 5px;
   margin-bottom: 80px;
 }
@@ -112,17 +112,19 @@ body {
 /* pagina graficos */
 
 .dash-header {
-  background-color: #212124;
+  background-color: white;
 }
 
 .dash {
   width: 80%;
-  position: relative;
+  position: fixed;
   top: 0;
   left: 20%;
-  background-color: #161618;
+  background-color: white;
   height: 100vh;
   overflow: auto;
+    background: linear-gradient(to bottom, white,lch(64.35% 18.4 208.47 / 0.8));
+z-index: -1;
 }
 
 .area-parametros-alerta {
@@ -132,7 +134,7 @@ body {
   width: 70%;
   margin: auto;
   margin-top: 10px;
-  background-color: #212124;
+  background-color: #6fa5ab;
 }
 
 .area-parametros-alerta .titulo-legenda {
@@ -286,7 +288,7 @@ body {
   font-weight: 600;
   font-size: 18px;
   padding: 10px 15px;
-  color: #e6005a;
+  color: #6fa5ab;
   background-color: white;
   margin: 5px;
   border-radius: 3px;
@@ -295,11 +297,11 @@ body {
 
 .btn-pink {
   color: white;
-  background-color: #e6005a;
+  background-color: #6fa5ab;
 }
 
 .btn-white {
-  color: #e6005a;
+  color: #6fa5ab;
   background-color: white;
 
 }
@@ -348,15 +350,17 @@ canvas {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 3px solid #32b9cd;
-  background-color: #212124;
+  border-right: 3px solid #6fa5ab;
+  background-color: white;
+    background: linear-gradient(to bottom, white,lch(64.35% 18.4 208.47 / 0.8));
+
 }
 
 .dash-right {
   display: flex;
   width: 70%;
   height: fit-content;
-  background-color: #161618;
+  background-color: white;
   position: relative;
   top: 0;
   left: 25%;
@@ -365,7 +369,7 @@ canvas {
 }
 
 .header-left h1 {
-  color: #32b9cd;
+  color: #6fa5ab;
 }
 
 .hello {
@@ -375,7 +379,7 @@ canvas {
 }
 
 .hello h3 {
-  color: #e3b062;
+  color: #6fa5ab;
   font-weight: 300;
   font-size: 1.2rem;
 }
@@ -387,7 +391,7 @@ canvas {
 .btn-nav {
   width: 40%;
   color: white;
-  background-color: #e6005a;
+  background-color: #6fa5ab;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
@@ -396,14 +400,14 @@ canvas {
 .btn-nav-white {
   width: 40%;
   background-color: white;
-  border: 3px solid #e6005a;
+  border: 3px solid #6fa5ab;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
 }
 
 .btn-nav-white h3 {
-  color: #e6005a;
+  color: #6fa5ab;
   padding: 0;
   margin: 0;
 }
@@ -418,7 +422,7 @@ canvas {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #32b9cd;
+  background-color: #6fa5ab;
   color: white;
   border-radius: 10px;
   text-align: center;
