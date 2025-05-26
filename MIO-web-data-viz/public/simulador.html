@@ -68,11 +68,11 @@
                         </select>
                         <button class="botao" onclick="ver()">Ver IG</button>
                     </div>
-                </div id="div_mensagem" class="mensagem" style="margin-top: 20px;">
+                </div id="div_mensagem" class="div_mensagem1" style="margin-top: 20px;">
             </div>
 
             <!-- Segunda calculadora -->
-            <div class="card card-simulador">
+            <div class="card card-simulador2">
                 <h2>Conversor de semanas para meses</h2>
                 <div class="formulario">
                     <div class="campo">
@@ -80,20 +80,17 @@
                         <input type="number" id="input_semanas" style="width:40px;"><br>
                     </div>
                     <button class="botao" onclick="calcular()">Calcular</button>
+
                     <div id="div_mensagem" class="mensagem" style="margin-top: 20px;"></div>
                 </div>
             </div>
 
-            <!-- Resultado das mensagens -->
-             
-
         </div>
     </div>
-    <!-- simulador fim -->
 
 <script>
     function ver() {
-        var div_mensagem = document.getElementById('div_mensagem');
+
 
         var dia = Number(input_dia.value);
         var mes = Number(select_mes.value);

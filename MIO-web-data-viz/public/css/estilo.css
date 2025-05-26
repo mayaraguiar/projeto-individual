@@ -395,6 +395,7 @@ input {
   height: 100%;
       background-image: url(../assets/imgs/fundo3.png );
           background-size:contain;
+  gap: 20px;
 }
 
 .card-simulador {
@@ -407,7 +408,7 @@ input {
     background: white(245, 242, 242, 0.86); 
     border-radius: 12px;
     gap: 20px;
-    width: 550px;
+    width: 490px;
 
 
 }
