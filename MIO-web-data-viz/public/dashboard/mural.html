@@ -45,14 +45,19 @@
             </div>
 
             <div class="btn-nav">
-                <h3>Consulta</h3>
+                <h3>Cadastro Gestante/Mural</h3>
             </div>
 
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
 
-        <div class="avisos">
+        </div>
+
+        <div class="dash-right">
+
+
+            <div class="avisos">
                 <div id="alerta">
                 </div>
                 <div class="container">
@@ -152,9 +157,6 @@
 
 
 
-
-
-
 </body>
 
 </html>
@@ -162,6 +164,45 @@
 <script>
     
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function cadastrarGestante() {
+    const idUsuario = sessionStorage.ID_USUARIO;
+
+    const dadosGestante = {
+        nome: document.getElementById("nome").value,
+        gesta: document.getElementById("gesta").value,
+        paridade: document.getElementById("paridade").value,
+        aborto: document.getElementById("aborto").value,
+        numPN: document.getElementById("numPN").value,
+        numPC: document.getElementById("numPC").value,
+        dum: document.getElementById("dum").value,
+        dpp: document.getElementById("dpp").value,
+        altoRisco: document.getElementById("altorisco").value,
+        idUsuario: idUsuario
+    };
+
+    console.log(dadosGestante)
+
+    fetch("/gestante/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dadosGestante)
+    }).then(res => {
+        if (res.ok) {
+            alert("Gestante cadastrada com sucesso!");
+            document.getElementById("form_gestante").reset();
+        } else {
+            res.text().then(texto => alert("Erro: " + texto));
+        }
+    }).catch(err => {
+        console.error(err);
+        alert("Erro ao cadastrar!");
+    });
+
+    return false;
+}
 
     function limparFormulario() {
         document.getElementById("form_postagem").reset();
@@ -186,14 +227,14 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.alert("Dados cadastro com sucesso pelo usuario de ID: " + idUsuario + "!");
                 window.location = "/dashboard/mural.html";
                 limparFormulario();
                 finalizarAguardar();
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+                throw ("Houve um erro ao tentar realizar o cadastro! Código da resposta: " + resposta.status);
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
@@ -212,27 +253,28 @@
 
     }
 
-    function deletar(idAviso) {
-        console.log("Criar função de apagar post escolhido - ID" + idAviso);
-        fetch(`/avisos/deletar/${idAviso}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
+     function deletar(idAviso) 
+     {
+         console.log("Criar função de apagar post escolhido - ID" + idAviso);
+         fetch(`/avisos/deletar/${idAviso}`, {
+             method: "DELETE",
+             headers: {
+                 "Content-Type": "application/json"
+             }
+         }).then(function (resposta) {
 
-            if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
+             if (resposta.ok) {
+                 window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                 window.location = "/dashboard/mural.html"
+             } else if (resposta.status == 404) {
+                 window.alert("Deu 404!");
+             } else {
+                 throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+             }
+         }).catch(function (resposta) {
+             console.log(`#ERRO: ${resposta}`);
+         });
+     }
 
     function atualizarFeed() {
         fetch("/avisos/listar").then(function (resposta) {
@@ -240,7 +282,7 @@
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
                     var mensagem = document.createElement("span");
-                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    mensagem.innerHTML = ""
                     feed.appendChild(mensagem);
                     throw "Nenhum resultado encontrado!!";
                 }
