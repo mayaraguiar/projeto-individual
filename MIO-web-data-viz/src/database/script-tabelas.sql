@@ -6,8 +6,7 @@ create table profissional(
 idProfissional int auto_increment primary key,
 nomeProfissional varchar(45),
 email varchar(45),
-senha varchar (45),
-codigoAtivacao VARCHAR(7)
+senha varchar (45)
 );
 
 
@@ -67,9 +66,9 @@ constraint chkRnVivo
  
  
  insert into profissional values
- ( default, 'Samia', 'samia@email.com', 'Zamj123', 'c20bje1'),
-( default, 'Aline', 'aline@email.com', 'Zamj124', 'c20bje2'),
-( default, 'Beatriz', 'beatriz@email.com', 'Zamj125', 'c20bje2');
+ ( default, 'Samia', 'samia@email.com', 'Zamj123'),
+( default, 'Aline', 'aline@email.com', 'Zamj124'),
+( default, 'Beatriz', 'beatriz@email.com', 'Zamj125');
 
 
 insert into gestante values

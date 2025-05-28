@@ -52,36 +52,94 @@
                 <h3>Sair</h3>
             </div>
 
-        </div>
-
-        <div class="dash-right">
-
-
-            <div class="avisos">
+        <div class="avisos">
                 <div id="alerta">
                 </div>
                 <div class="container">
-                    <h1>Publicar um aviso</h1>
+                    <h1>Informações da gestante</h1>
                     <div class="div-form">
-                        <form id="form_postagem" method="post" onsubmit="return publicar()">
-                            <label>
-                                Título:
-                                <br>
-                                <input name="titulo" id="titulo" maxlength="100" type="text">
-                            </label>
-                            <br>
-                            <br>
-                            <label>
-                                Descrição (máximo de 250 caracteres):
-                                <br>
-                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
-                            </label>
-                            <br>
-                            <br>
-                            <button>Enviar</button>
-                        </form>
+                        <form id="form_gestante" method="post" onsubmit="return cadastrarGestante()">
+    <label>
+        Nome da Gestante:
+        <input name="nome" id="nome" type="text" required>
+    </label><br><br>
+
+    <label>
+        Gesta:
+        <select id="gesta" required>
+            <option value="">Selecione</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4+</option>
+        </select>
+    </label><br><br>
+
+    <label>
+        Paridade:
+        <select id="paridade" required>
+            <option value="">Selecione</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3+</option>
+        </select>
+    </label><br><br>
+
+    <label>
+        Aborto:
+        <select id="aborto" required>
+            <option value="">Selecione</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2+</option>
+        </select>
+    </label><br><br>
+
+    <label>
+        N° de Parto Normal (PN):
+        <select id="numPN" required>
+            <option value="">Selecione</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2+</option>
+        </select>
+    </label><br><br>
+
+    <label>
+        N° de Parto Cesárea (PC):
+        <select id="numPC" required>
+            <option value="">Selecione</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2+</option>
+        </select>
+    </label><br><br>
+
+    <label>
+        DUM (Data da Última Menstruação):
+        <input type="date" id="dum" required>
+    </label><br><br>
+
+    <label>
+        DPP (Data Provável do Parto):
+        <input type="date" id="dpp" required>
+    </label><br><br>
+
+    <label>
+        Alto Risco:
+        <select id="altorisco" required>
+            <option value="">Selecione</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+        </select>
+    </label><br><br>
+
+    <button type="submit">Cadastrar</button>
+</form>
+
                     </div>
-                    <h1>Mural de Avisos</h1>
+                    <h1></h1>
                     <div class="div-results">
                         <div id="feed_container" class="feed-container">
                         </div>
@@ -90,6 +148,9 @@
             </div>
         </div>
     </div>
+
+
+
 
 
 
