@@ -6,7 +6,8 @@ create table profissional(
 idProfissional int auto_increment primary key,
 nomeProfissional varchar(45),
 email varchar(45),
-senha varchar (45)
+senha varchar (45),
+codigoAtivacao VARCHAR(7)
 );
 
 
