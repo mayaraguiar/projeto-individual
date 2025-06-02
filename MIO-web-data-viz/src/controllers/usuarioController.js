@@ -55,8 +55,7 @@ function cadastrar(req, res) {
         usuarioModel.cadastrar(nome, email, senha)
             .then(
                 function (resultado) {
-                    res.json({id: resultado[0].idProfissional, // <-- Coloque o nome certo aqui
-                    email: resultado[0].email});
+                    res.json({resultado});
                 }
             ).catch(
                 function (erro) {

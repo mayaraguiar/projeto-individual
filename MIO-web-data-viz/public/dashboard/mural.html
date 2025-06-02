@@ -34,7 +34,7 @@
 
             <div class="btn-nav-white">
                 <a href="cards.html">
-                    <h3>Cadastro Gestante</h3>
+                    <h3>Consulta</h3>
                 </a>
             </div>
 
@@ -45,7 +45,7 @@
             </div>
 
             <div class="btn-nav">
-                <h3>Cadastro Gestante/Mural</h3>
+                <h3>Cadastro Gestante</h3>
             </div>
 
             <div class="btn-logout" onclick="limparSessao()">
@@ -63,14 +63,26 @@
                 <div class="container">
                     <h1>Informações da gestante</h1>
                     <div class="div-form">
-                        <form id="form_gestante" method="post" onsubmit="return cadastrarGestante()">
+                        <form id="form_gestante" onsubmit="cadastrarGestante()">
     <label>
-        Nome da Gestante:
-        <input name="nome" id="nome" type="text" required>
-    </label><br><br>
+        Nome da Gestante: <br>
+        <input id="nomeGestante" type="text" required>
+    </label><br>
+   <label>
+        Data de Nascimento: <br>
+        <input id="dtNascimento" type="date" required>
+    </label><br>
+        <label>
+        Celular: <br>
+        <input id="telefone" type="number" required>
+    </label><br> 
 
+
+
+
+         <h1>Informações Obstétricas</h1>
     <label>
-        Gesta:
+        Gesta: <br>
         <select id="gesta" required>
             <option value="">Selecione</option>
             <option value="1">1</option>
@@ -81,10 +93,10 @@
     </label><br><br>
 
     <label>
-        Paridade:
+        Paridade: <br>
         <select id="paridade" required>
             <option value="">Selecione</option>
-            <option value="0">0</option>
+            <option value="0">Nenhuma</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3+</option>
@@ -92,54 +104,61 @@
     </label><br><br>
 
     <label>
-        Aborto:
+        Aborto: <br>
         <select id="aborto" required>
             <option value="">Selecione</option>
-            <option value="0">0</option>
+            <option value="0">Nenhum</option>
             <option value="1">1</option>
             <option value="2">2+</option>
         </select>
     </label><br><br>
 
     <label>
-        N° de Parto Normal (PN):
+        N° de Parto Normal (PN): <br>
         <select id="numPN" required>
             <option value="">Selecione</option>
-            <option value="0">0</option>
+            <option value="0">Nenhum</option>
             <option value="1">1</option>
             <option value="2">2+</option>
         </select>
     </label><br><br>
 
     <label>
-        N° de Parto Cesárea (PC):
+        N° de Parto Cesárea (PC): <br>
         <select id="numPC" required>
             <option value="">Selecione</option>
-            <option value="0">0</option>
+            <option value="0">Nenhum</option>
             <option value="1">1</option>
             <option value="2">2+</option>
         </select>
     </label><br><br>
 
     <label>
-        DUM (Data da Última Menstruação):
+        DUM (Data da Última Menstruação): <br>
         <input type="date" id="dum" required>
     </label><br><br>
 
     <label>
-        DPP (Data Provável do Parto):
+        DPP (Data Provável do Parto): <br>
         <input type="date" id="dpp" required>
     </label><br><br>
 
     <label>
-        Alto Risco:
+        Alto Risco: <br>
         <select id="altorisco" required>
             <option value="">Selecione</option>
             <option value="Sim">Sim</option>
             <option value="Não">Não</option>
         </select>
     </label><br><br>
-
+    <!-- <label>
+         Pré Natal Ativo?: <br>
+        <select id="statusPreNatal" required>
+            <option value="">Selecione</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+        </select>
+    </label><br><br> --> 
     <button type="submit">Cadastrar</button>
 </form>
 
@@ -169,7 +188,7 @@
     const idUsuario = sessionStorage.ID_USUARIO;
 
     const dadosGestante = {
-        nome: document.getElementById("nome").value,
+        nomeGestante: document.getElementById("nomeGestante").value,
         gesta: document.getElementById("gesta").value,
         paridade: document.getElementById("paridade").value,
         aborto: document.getElementById("aborto").value,
@@ -178,7 +197,7 @@
         dum: document.getElementById("dum").value,
         dpp: document.getElementById("dpp").value,
         altoRisco: document.getElementById("altorisco").value,
-        idUsuario: idUsuario
+        // idUsuario: idUsuario
     };
 
     console.log(dadosGestante)

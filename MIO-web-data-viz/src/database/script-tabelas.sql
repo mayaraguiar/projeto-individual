@@ -21,7 +21,7 @@ telefone varchar (11)
 create table infoGestante(
 idInfoGestante int primary key auto_increment,
 fkGestante int,
-statusPreNatal varchar (7),
+nomeGestante varchar(45), 
 gesta decimal,
 paridade decimal,
 aborto decimal,
@@ -67,9 +67,9 @@ constraint chkRnVivo
  
  
  insert into profissional values
- ( default, 'Samia', 'samia@email.com', 'Zamj123'),
-( default, 'Aline', 'aline@email.com', 'Zamj124'),
-( default, 'Beatriz', 'beatriz@email.com', 'Zamj125');
+ ( default, 'Samia', 'samia@email.com', 'Zamj123','bje'),
+( default, 'Aline', 'aline@email.com', 'Zamj124','bje'),
+( default, 'Beatriz', 'beatriz@email.com', 'Zamj125', 'bje');
 
 
 insert into gestante values
@@ -88,6 +88,8 @@ insert into historicoPreNatal values
 (default, 'Normal', 'Sim', 'Sim', '2025-02-04', 2),
 (default, 'Normal', 'Não', 'Sim', '2025-01-05', 3),
 (default, 'Cesárea', 'Sim', 'Sim', '2025-03-22', 1);
+
+select * from gestante;
 
  -- Exibir pacientes que estão realizando pré natal ativas (KPI) 
 SELECT COUNT(*) AS totalGestantesAtivas
@@ -113,17 +115,23 @@ WHERE complicacoes = 'Não'
 
 
  
- -- Gestante com DPP para cada mês do ano 
+ -- Gestante com DPP para cada mês do ano -- barra
  SELECT MONTH(dpp) AS mes, COUNT(*) AS total
 FROM infoGestante
 GROUP BY MONTH(dpp)
 ORDER BY mes;
- -- Via de parto no ultimo ano 
+ -- Via de parto no ultimo ano -- barra
  
-SELECT viaParto, COUNT(*) AS total
+SELECT month(dtParto) AS Mes, viaParto, COUNT(*) AS total
 FROM historicoPreNatal
-GROUP BY viaParto;
+where viaParto = 'Normal'
+;
 
+SELECT month(dtParto) AS Mes, viaParto, COUNT(*) AS total
+FROM historicoPreNatal
+where viaParto = 'Cesárea'
+GROUP BY month(dtParto)
+;
 --  6. Total de RN vivos vs óbitos
 SELECT rnVivo, COUNT(*) AS total
 FROM historicoPreNatal

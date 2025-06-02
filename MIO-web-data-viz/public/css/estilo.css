@@ -181,6 +181,47 @@ z-index: 0;
     color: var(--escuro) ;
     
 }
+
+/* Sobre */
+
+.socialSobre2{
+    height: 600px;
+    width: 100%;
+    background-color: #dcdcdc;
+}
+.socialSobre2 .container{
+    height: inherit;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.boxesSobre2 {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.boxSobre2{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.boxSobre2 img {
+    width: 300px;
+    height: 320px;
+    border-radius: 50px;
+}
+.boxSobre2 h4{
+    margin: 0;
+    margin-top:10px ;
+    color: var(--escuro) ;
+    
+}
 /* FOOTER */
 
 .footer {

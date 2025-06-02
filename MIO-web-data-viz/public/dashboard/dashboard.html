@@ -8,11 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIO Baby | Dashboards</title>
 
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
+
+    <style>
+        .grafico {
+            width: 600px;
+            margin: auto;
+        }
+    </style>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -30,84 +37,170 @@
 
 <body>
 
-    <div class="janela">
-        <div class="header-left">
-            <h1>MIO Baby</h1>
+    <main class="conteudo">
+        <div class="janela">
+            <div class="header-left">
+                <h1>MIO Baby</h1>
 
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <div class="hello">
+                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                </div>
+
+                <div class="btn-nav-white">
+                    <a href="./cards.html">
+                        <h3>Consulta</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav">
+
+                    <h3>Dashboards</h3>
+
+                </div>
+
+                <div class="btn-nav-white">
+                    <a href="./mural.html">
+                        <h3>Cadastro Gestante</h3>
+                    </a>
+                </div>
+
+                <div class="btn-logout" onclick="limparSessao()">
+                    <h3>Sair</h3>
+                </div>
+
             </div>
-
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Cadastro Gestante</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-
-                <h3>Dashboards</h3>
-
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Consulta</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
         </div>
-
-        <div class="dash">
-            <div id="alerta">
+        
+        <section class="dash">
+            <div class="tituloDash">
+                <p> <h1>Painel de indicadores</h1> </p>
             </div>
+            <div class="kpis">
 
-            <div class="btns-dash" id="btnAquario">
-                <div class="dash">
-            <div id="alerta">
-            </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
-                </p>
                 <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
-                        <p>&lt;=5°C</p>
+                    <div class="item-regua altoRisco">
+                        <p>Gestantes que estão realizando pré natal de de alto risco</p>
+                        <p>&lt;8</p>
                     </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
+
+                    <div class="item-regua complicacao">
+                        <p>Gestantes que tiveram complicações no ultimo ano</p>
+                        <p>&lt;5/60</p>
                     </div>
+
                     <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
-                    </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
+                        <p>Pacientes que estão realizando pré natal ativas</p>
+                        <p>10</p>
                     </div>
                 </div>
-            </div>
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
-            <div id="graficos">
-            </div>
-        </div>
-    </div>
+                <div class="graficos">
+
+                    <div class="grafico">
+                        <p>Partos por mes</p>
+                        <canvas id="grafico_barra2"></canvas>
+                    </div>
+                    
+                    <div class="grafico">
+                        <h3>Via de Parto</h3>
+                        <canvas id="grafico_barra"></canvas>
+                    </div>
+                </div>
+
+
+</section>
+</main>
+
 
 
 </body>
 
 </html>
+
+
+
+<script>
+    const ctx = document.getElementById('grafico_barra').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            datasets: [
+                {
+                    label: 'Parto Normal',
+                    data: [6.4, 6.2, 7, 6.3, 6.1, 6, 6.5, 6.3, 6.5, 6.1, 6.2, 6.4],
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Cesárea',
+                    data: [5.2, 5.5, 6.1, 5.9, 5.7, 5.8, 6, 5.9, 6.1, 5.8, 5.9, 6],
+                    backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Via de parto no último ano',
+                    font: {
+                        size: 18
+                    },
+                    color: '#000'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+    const barra = document.getElementById('grafico_barra2');
+
+new Chart(barra, {
+  type: 'bar',
+  data: {
+    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+    datasets: [{
+      label: 'Gestante com DPP para cada mês do ano',
+      data: [6,6,7,6,6,6,6,6,6,6, 3,5,6],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    plugins:{
+    title: {
+              display: true,
+              text: 'Gestante com DPP para cada mês do ano',
+              font: {
+          size: 18
+        },
+        color: '#000'
+      }
+    },
+          
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+
+
+</script>
+
+
+
+
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
@@ -248,6 +341,37 @@
                 tension: 0.1
             }]
         };
+        const barra = document.getElementById('grafico_barra2');
+
+        new Chart(barra, {
+            type: 'bar',
+            data: {
+                labels: ['15/04', '16/04', '17/04', '18/04', '19/04', '20/04', '21/04', '22/04', '23/04', '24/04'],
+                datasets: [{
+                    label: 'Gestante com DPP para cada mês do ano',
+                    data: [6.4, 6.2, 7, 6.3, 6.1, 6, 6.5, 6.3, 6.5, 6.1],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Gestante com DPP para cada mês do ano',
+                        font: {
+                            size: 18
+                        },
+                        color: '#000'
+                    }
+                },
+
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
