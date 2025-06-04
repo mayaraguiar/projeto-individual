@@ -1,9 +1,9 @@
- var infoGestanteModel = require("../models/gestanteModel");
+ var gestanteModel = require("../models/gestanteModel");
 
  function buscarInfoGestanteController(req, res) {
    var idGestante = req.params.idGestante;
 
-   infoGestanteModel.buscarInfoGestante(idGestante).then((resultado) => {
+   gestanteModel.buscarInfoGestante(idGestante).then((resultado) => {
      if (resultado.length > 0) {
        res.status(200).json(resultado);
      } else {
@@ -32,34 +32,34 @@
            var altoRisco= req.body.altoRisco;
 
 
-  //  if (nomeGestante == undefined) {
-  //    res.status(400).send("Nome da gestante está undefined!");
-  // //  } else if (statusPreNatal == undefined) {
-  // //    res.status(400).send("Status do PreNatal está 'undefined!");
-  //  }  else if (idGestante == undefined) {
-  //    res.status(400).send("id da Gestante está undefined!");
-  //  } else if (gesta == undefined) {
-  //    res.status(400).send("Campo Gesta undefined!");
-  //  }else if (paridade == undefined) {
-  //    res.status(400).send("Campo Paridade undefined!");
-  //  }else if (aborto == undefined) {
-  //    res.status(400).send("Campo Aborto undefined!");
-  //  }else if (numPN == undefined) {
-  //    res.status(400).send("Campo numero de PN está undefined!");
-  //  }else if (numPC == undefined) {
-  //    res.status(400).send("Campo numero de PC está undefined!");
-  //  }else if (dum == undefined) {
-  //    res.status(400).send("Campo DUM está undefined!");
-  //  }else if (dpp == undefined) {
-  //    res.status(400).send("Campo DPP está undefined!");
-  //  }else if (altoRisco == undefined) {
-  //    res.status(400).send("Campo alto risco  está undefined!");
-  //  }else {
+    if (nomeGestante == undefined) {
+      res.status(400).send("Nome da gestante está undefined!");
+     } else if (statusPreNatal == undefined) {
+       res.status(400).send("Status do PreNatal está 'undefined!");
+    } else if (gesta == undefined) {
+      res.status(400).send("Campo Gesta undefined!");
+    }else if (paridade == undefined) {
+      res.status(400).send("Campo Paridade undefined!");
+    }else if (aborto == undefined) {
+      res.status(400).send("Campo Aborto undefined!");
+    }else if (numPN == undefined) {
+      res.status(400).send("Campo numero de PN está undefined!");
+    }else if (numPC == undefined) {
+      res.status(400).send("Campo numero de PC está undefined!");
+    }else if (dum == undefined) {
+      res.status(400).send("Campo DUM está undefined!");
+    }else if (dpp == undefined) {
+      res.status(400).send("Campo DPP está undefined!");
+    }else if (altoRisco == undefined) {
+      res.status(400).send("Campo alto risco  está undefined!");
+    }else {
 
 
-     infoGestanteModel.cadastrar(nomeGestante, statusPreNatal, gesta, paridade, aborto, numPN, numPC, dum, dpp, altoRisco)
+     gestanteModel.cadastrar(nomeGestante, statusPreNatal, gesta, paridade, aborto, numPN, numPC, dum, dpp, altoRisco)
        .then((resultado) => {
          res.status(201).json(resultado);
+         console.log(resultado);
+          console.log('\nPaciente cadastrado com sucesso!');
        }
        ).catch((erro) => {
          console.log(erro);
@@ -70,7 +70,7 @@
          res.status(500).json(erro.sqlMessage);
        });
    }
-//  }
+  }
 
  module.exports = {
    buscarInfoGestanteController, // Controller?

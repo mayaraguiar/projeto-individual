@@ -30,6 +30,7 @@ numPC decimal,
 dum date,
 dpp date,
 altoRisco varchar(3),
+statusPreNatal varchar (3),
 constraint chkAltoRisco
 		check (altoRisco in ('Sim', 'Não')),
 constraint chkStatus

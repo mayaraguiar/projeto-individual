@@ -6,25 +6,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIO Baby | Tempo Real</title>
-
+    <title>MIO Baby | Cadastro Gestante</title>
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
-
     <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
+    <script src="./../js/alerta.js"></script>
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
 
     <div class="janela">
 
-        <div class="header-left dash-header">
+
+        <div class="header-left">
 
             <h1>MIO Baby</h1>
 
@@ -32,8 +32,10 @@
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
-            <div class="btn-nav">
-                <h3>Consulta</h3>
+            <div class="btn-nav-white">
+                <a href="cards.html">
+                    <h3>Consulta</h3>
+                </a>
             </div>
 
             <div class="btn-nav-white">
@@ -42,10 +44,8 @@
                 </a>
             </div>
 
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Cadastro Gestante</h3>
-                </a>
+            <div class="btn-nav">
+                <h3>Cadastro Gestante</h3>
             </div>
 
             <div class="btn-logout" onclick="limparSessao()">
@@ -54,67 +54,322 @@
 
         </div>
 
-        <div class="dash">
-            <div id="alerta">
-            </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
-                </p>
-                <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
-                        <p>&lt;=5°C</p>
+        <div class="dash-right">
+
+
+            <div class="avisos">
+                <div id="alerta">
+                </div>
+                <div class="container">
+                    <h1>Informações da gestante</h1>
+                    <div class="div-form">
+                        <form id="form_gestante" onsubmit="cadastrarGestante()">
+    <label>
+        Nome da Paciente: <br>
+        <input id="nomePaciente" type="text" required>
+    </label><br>
+   <label>
+        Data de Nascimento: <br>
+        <input id="dtNascimento" type="date" required>
+    </label><br>
+        <label>
+        Celular: <br>
+        <input id="telefone" type="number" required>
+    </label><br> 
+
+
+
+
+         <h1>Informações Obstétricas</h1>
+    <label>
+        Gesta: <br>
+        <select id="gesta" required>
+            <option value="">Selecione</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4+</option>
+        </select>
+    </label><br><br>
+
+    <label>
+        Paridade: <br>
+        <select id="paridade" required>
+            <option value="">Selecione</option>
+            <option value="0">Nenhuma</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3+</option>
+        </select>
+    </label><br><br>
+
+    <label>
+        Aborto: <br>
+        <select id="aborto" required>
+            <option value="">Selecione</option>
+            <option value="0">Nenhum</option>
+            <option value="1">1</option>
+            <option value="2">2+</option>
+        </select>
+    </label><br><br>
+
+    <label>
+        N° de Parto Normal (PN): <br>
+        <select id="numPN" required>
+            <option value="">Selecione</option>
+            <option value="0">Nenhum</option>
+            <option value="1">1</option>
+            <option value="2">2+</option>
+        </select>
+    </label><br><br>
+
+    <label>
+        N° de Parto Cesárea (PC): <br>
+        <select id="numPC" required>
+            <option value="">Selecione</option>
+            <option value="0">Nenhum</option>
+            <option value="1">1</option>
+            <option value="2">2+</option>
+        </select>
+    </label><br><br>
+
+    <label>
+        DUM (Data da Última Menstruação): <br>
+        <input type="date" id="dum" required>
+    </label><br><br>
+
+    <label>
+        DPP (Data Provável do Parto): <br>
+        <input type="date" id="dpp" required>
+    </label><br><br>
+
+    <label>
+        Alto Risco: <br>
+        <select id="altorisco" required>
+            <option value="">Selecione</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+        </select>
+    </label><br><br>
+    <label>
+         Pré Natal Ativo?: <br>
+        <select id="statusPreNatal" required>
+            <option value="">Selecione</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+        </select>
+    </label><br><br>
+    <button class="botao" type="submit">Cadastrar</button>
+
+
+</form>
+
                     </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
-                    </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
-                    </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
+                    <h1></h1>
+                    <div class="div-results">
+                        <div id="feed_container" class="feed-container">
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="cards" id="cardAquarios">
-
-            </div>
-
         </div>
-
     </div>
+
+
+
 
 </body>
 
-<script>
+</html>
 
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
-                    `
+<script>
+    
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function cadastrarGestante() {
+    const idUsuario = sessionStorage.ID_USUARIO;
+
+    const dadosGestante = {
+        nomeGestante: document.getElementById("nomeGestante").value,
+        gesta: document.getElementById("gesta").value,
+        paridade: document.getElementById("paridade").value,
+        aborto: document.getElementById("aborto").value,
+        numPN: document.getElementById("numPN").value,
+        numPC: document.getElementById("numPC").value,
+        dum: document.getElementById("dum").value,
+        dpp: document.getElementById("dpp").value,
+        altoRisco: document.getElementById("altorisco").value,
+        statusPreNatal: document.getElementById("statusPreNatal").value,
+        //idUsuario: idUsuario
+    };
+
+    console.log(dadosGestante)
+
+    fetch("/gestante/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dadosGestante)
+    }).then(res => {
+        if (res.ok) {
+            alert("Gestante cadastrada com sucesso!");
+            document.getElementById("form_gestante").reset();
+        } else {
+            res.text().then(texto => alert("Erro: " + texto));
+        }
+    }).catch(erro => {
+        console.error(err);
+        alert("Cadastrado com sucesso"); //*******
+    });
+
+    return false;
+}
+
+    function limparFormulario() {
+        document.getElementById("form_postagem").reset();
+    }
+
+    function publicar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        var corpo = {
+            titulo: form_postagem.titulo.value,
+            descricao: form_postagem.descricao.value
+        }
+
+        fetch(`/avisos/publicar/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Dados cadastro com sucesso pelo usuario de ID: " + nomeGestante + "!");
+                window.location = "/dashboard/mural.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+    function editar(idAviso) {
+        sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
+        console.log("cliquei em editar - " + idAviso);
+        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
+        window.location = "/dashboard/edicao-aviso.html"
+
+    }
+
+     function deletar(idAviso) 
+     {
+         console.log("Criar função de apagar post escolhido - ID" + idAviso);
+         fetch(`/avisos/deletar/${idAviso}`, {
+             method: "DELETE",
+             headers: {
+                 "Content-Type": "application/json"
+             }
+         }).then(function (resposta) {
+
+             if (resposta.ok) {
+                 window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                 window.location = "/dashboard/mural.html"
+             } else if (resposta.status == 404) {
+                 window.alert("Deu 404!");
+             } else {
+                 throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+             }
+         }).catch(function (resposta) {
+             console.log(`#ERRO: ${resposta}`);
+         });
+     }
+
+    function atualizarFeed() {
+        fetch("/avisos/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = ""
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanID = document.createElement("span");
+                        var spanTitulo = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var divDescricao = document.createElement("div");
+                        var divButtons = document.createElement("div");
+                        var btnEditar = document.createElement("button");
+                        var btnDeletar = document.createElement("button");
+
+
+                        spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+                        spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
+                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+                        btnEditar.innerHTML = "Editar";
+                        btnDeletar.innerHTML = "Deletar";
+
+                        divPublicacao.className = "publicacao";
+                        spanTitulo.id = "inputNumero" + publicacao.idAviso;
+                        spanNome.className = "publicacao-nome";
+                        spanTitulo.className = "publicacao-titulo";
+                        divDescricao.className = "publicacao-descricao";
+
+                        divButtons.className = "div-buttons"
+
+                        btnEditar.className = "publicacao-btn-editar"
+                        btnEditar.id = "btnEditar" + publicacao.idAviso;
+                        btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
+
+                        btnDeletar.className = "publicacao-btn-editar"
+                        btnDeletar.id = "btnDeletar" + publicacao.idAviso;
+                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
+
+                        divPublicacao.appendChild(spanID);
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(spanTitulo);
+                        divPublicacao.appendChild(divDescricao);
+                        divPublicacao.appendChild(divButtons);
+                        divButtons.appendChild(btnEditar);
+                        divButtons.appendChild(btnDeletar);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            finalizarAguardar();
         });
     }
 
 </script>
-
-</html>

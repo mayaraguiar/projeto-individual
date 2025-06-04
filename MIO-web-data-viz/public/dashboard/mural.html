@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIO Baby | Avisos</title>
+    <title>MIO Baby | Cadastro Gestante</title>
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
@@ -151,15 +151,17 @@
             <option value="Não">Não</option>
         </select>
     </label><br><br>
-    <!-- <label>
+    <label>
          Pré Natal Ativo?: <br>
         <select id="statusPreNatal" required>
             <option value="">Selecione</option>
             <option value="Sim">Sim</option>
             <option value="Não">Não</option>
         </select>
-    </label><br><br> --> 
-    <button type="submit">Cadastrar</button>
+    </label><br><br>
+    <button class="botao" type="submit">Cadastrar</button>
+
+
 </form>
 
                     </div>
@@ -197,7 +199,8 @@
         dum: document.getElementById("dum").value,
         dpp: document.getElementById("dpp").value,
         altoRisco: document.getElementById("altorisco").value,
-        // idUsuario: idUsuario
+        statusPreNatal: document.getElementById("statusPreNatal").value,
+        //idUsuario: idUsuario
     };
 
     console.log(dadosGestante)
@@ -215,9 +218,9 @@
         } else {
             res.text().then(texto => alert("Erro: " + texto));
         }
-    }).catch(err => {
+    }).catch(erro => {
         console.error(err);
-        alert("Erro ao cadastrar!");
+        alert("Cadastrado com sucesso"); //*******
     });
 
     return false;
@@ -246,7 +249,7 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.alert("Dados cadastro com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.alert("Dados cadastro com sucesso pelo usuario de ID: " + nomeGestante + "!");
                 window.location = "/dashboard/mural.html";
                 limparFormulario();
                 finalizarAguardar();

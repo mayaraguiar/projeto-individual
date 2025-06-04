@@ -29,6 +29,7 @@ body {
   display: flex;
   flex-direction: row;
   /* width: 100vw; */
+  color: #408087;
 
 }
 
@@ -42,8 +43,7 @@ padding: 20px;
 margin-left: 20.1%;
 flex-direction: column;
 box-sizing: border-box;
-background-color: #3b4445;
-
+background-color: aliceblue;
 }
 .tituloDash{
   display: flex;
@@ -65,21 +65,20 @@ margin-bottom: 30px;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
-  color: white;
-  background-color: #6fa5ab;
-  t
+  color: #408087;
+  background-color: transparent;
 }
 
 
 .item-regua.altoRisco{
-  border: solid;
+  border: 1px solid;
 }
 
 .item-regua.complicacao{
-  border: solid;
+  border: 1px solid;
 }
 .item-regua.ideal{
-  border: solid;
+  border: 1px solid;
 }
 
 .kpis{
@@ -88,7 +87,7 @@ margin-bottom: 30px;
 
 .header-left a {
   text-decoration: none;
-  color: white;
+  color: #408087;
 }
 
 .header-left {
@@ -102,14 +101,14 @@ margin-bottom: 30px;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 3px solid #6fa5ab;
-  background-color: white;
+  border-right: 3px solid #408087;
+  background-color: #408087;
     background: linear-gradient(to bottom, white,lch(64.35% 18.4 208.47 / 0.8));
 
 }
 
 .header-left h1 {
-  color: #6fa5ab;
+  color: #408087;
 }
 
 .hello {
@@ -119,7 +118,7 @@ margin-bottom: 30px;
 }
 
 .hello h3 {
-  color: #6fa5ab;
+  color: #408087;
   font-weight: 300;
   font-size: 1.2rem;
 }
@@ -131,8 +130,8 @@ margin-bottom: 30px;
 .btn-nav {
   width: 40%;
   color: white;
-  background-color: #6fa5ab;
-  border-radius: 5px;
+  background-color: #408087;
+  border-radius: 10px;
   text-align: center;
   padding: 2% 5%;
 }
@@ -140,14 +139,14 @@ margin-bottom: 30px;
 .btn-nav-white {
   width: 40%;
   background-color: white;
-  border: 3px solid #6fa5ab;
-  border-radius: 5px;
+  border: 3px solid #408087;
+  border-radius: 10px;
   text-align: center;
   padding: 2% 5%;
 }
 
 .btn-nav-white h3 {
-  color: #6fa5ab;
+  color: #408087;
   padding: 0;
   margin: 0;
 }
@@ -162,7 +161,7 @@ margin-bottom: 30px;
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #6fa5ab;
+  background-color: #408087;
   color: white;
   border-radius: 10px;
   text-align: center;
