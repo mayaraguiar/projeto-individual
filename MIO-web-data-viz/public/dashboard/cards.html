@@ -6,25 +6,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIO Baby | Cadastro Gestante</title>
+    <title>MIO Baby | Consulta</title>
+
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
-    <script src="../js/sessao.js"></script>
-    <script src="./../js/alerta.js"></script>
+    <link rel="stylesheet" href="./../css/consulta.css" />
 
+    <script src="../js/sessao.js"></script>
+    <script src="../js/alerta.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
+<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
 
     <div class="janela">
 
-
-        <div class="header-left">
+        <div class="header-left dash-header">
 
             <h1>MIO Baby</h1>
 
@@ -32,10 +33,8 @@
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
-            <div class="btn-nav-white">
-                <a href="cards.html">
-                    <h3>Consulta</h3>
-                </a>
+            <div class="btn-nav">
+                <h3>Consulta</h3>
             </div>
 
             <div class="btn-nav-white">
@@ -44,8 +43,10 @@
                 </a>
             </div>
 
-            <div class="btn-nav">
-                <h3>Cadastro Gestante</h3>
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Cadastro Gestante</h3>
+                </a>
             </div>
 
             <div class="btn-logout" onclick="limparSessao()">
@@ -53,135 +54,78 @@
             </div>
 
         </div>
-
-        <div class="dash-right">
-
-
-            <div class="avisos">
-                <div id="alerta">
-                </div>
-                <div class="container">
-                    <h1>Informações da gestante</h1>
-                    <div class="div-form">
-                        <form id="form_gestante" onsubmit="cadastrarGestante()">
-    <label>
-        Nome da Paciente: <br>
-        <input id="nomePaciente" type="text" required>
-    </label><br>
-   <label>
-        Data de Nascimento: <br>
-        <input id="dtNascimento" type="date" required>
-    </label><br>
+        <div class="consulta">
         <label>
-        Celular: <br>
-        <input id="telefone" type="number" required>
-    </label><br> 
+            <label>
+               <h1>Consulta:</h1>
+
+            </label><br>
+            <label>
+                Data da consulta: <br>
+                <input id="dtConsulta" type="date" required>
+            </label><br>
+            <label>
+                Nome da Paciente: <br>
+                <input id="nomePaciente" type="text" required>
+            </label><br>
+            <label>
+                Altura Uterina (AU): <br>
+                <input id="au" type="text" required>
+            </label><br> 
+            <label>
+                Batimentos cardíacos fetal (BCF): <br>
+                <input id="bcf" type="number" required>
+            </label><br> 
+            <label>
+                Pressão Arterial (PA): <br>
+                <input id="PA" type="text" required>
+            </label><br> 
+            <label>
+                Evolução: <br>
+    <input name="evolucao" id="titulo" maxlength="100" type="text" style="width: 200px; height: 50px;">
+            </label><br> 
+            
+            <button class="botao" type="submit">Cadastrar</button> <br><br>
+            <div class="finalizado">
+                <h1>Pré Natal Finalizado:</h1> <br>
+                <label>
+                Nome da paciente: <br>
+                <input id="nomePacientefinalizada" type="text" required>
+            </label><br>
+            <label>
+                Complicações <br>
+                <select  id="complicacoes">
+                    <option value="#">Selecione</option>
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+            </label><br><br>
+            <label>
+                RN vivo? <br>
+                <select  id="rn">
+                    <option value="#">Selecione</option>
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+            </label><br><br>
+                            <label>
+                Data do Parto: <br>
+                <input id="dtParto" type="date" required>
+            </label><br><br>
+                        <button class="botao" type="submit">Finalizar</button> <br><br>
+            <label>
 
 
 
 
-         <h1>Informações Obstétricas</h1>
-    <label>
-        Gesta: <br>
-        <select id="gesta" required>
-            <option value="">Selecione</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4+</option>
-        </select>
-    </label><br><br>
-
-    <label>
-        Paridade: <br>
-        <select id="paridade" required>
-            <option value="">Selecione</option>
-            <option value="0">Nenhuma</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3+</option>
-        </select>
-    </label><br><br>
-
-    <label>
-        Aborto: <br>
-        <select id="aborto" required>
-            <option value="">Selecione</option>
-            <option value="0">Nenhum</option>
-            <option value="1">1</option>
-            <option value="2">2+</option>
-        </select>
-    </label><br><br>
-
-    <label>
-        N° de Parto Normal (PN): <br>
-        <select id="numPN" required>
-            <option value="">Selecione</option>
-            <option value="0">Nenhum</option>
-            <option value="1">1</option>
-            <option value="2">2+</option>
-        </select>
-    </label><br><br>
-
-    <label>
-        N° de Parto Cesárea (PC): <br>
-        <select id="numPC" required>
-            <option value="">Selecione</option>
-            <option value="0">Nenhum</option>
-            <option value="1">1</option>
-            <option value="2">2+</option>
-        </select>
-    </label><br><br>
-
-    <label>
-        DUM (Data da Última Menstruação): <br>
-        <input type="date" id="dum" required>
-    </label><br><br>
-
-    <label>
-        DPP (Data Provável do Parto): <br>
-        <input type="date" id="dpp" required>
-    </label><br><br>
-
-    <label>
-        Alto Risco: <br>
-        <select id="altorisco" required>
-            <option value="">Selecione</option>
-            <option value="Sim">Sim</option>
-            <option value="Não">Não</option>
-        </select>
-    </label><br><br>
-    <label>
-         Pré Natal Ativo?: <br>
-        <select id="statusPreNatal" required>
-            <option value="">Selecione</option>
-            <option value="Sim">Sim</option>
-            <option value="Não">Não</option>
-        </select>
-    </label><br><br>
-    <button class="botao" type="submit">Cadastrar</button>
-
-
-</form>
-
-                    </div>
-                    <h1></h1>
-                    <div class="div-results">
-                        <div id="feed_container" class="feed-container">
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
+
+            </div>
     </div>
-
-
-
 
 </body>
 
 </html>
-
 <script>
     
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
