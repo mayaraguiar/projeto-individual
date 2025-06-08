@@ -21,22 +21,25 @@ body {
   transform: translateX(170%);
   background-color: aliceblue;
   padding: 15%;
-
+  border: #408087;
+  border: 2px solid #408087;
  
 }
 
 .janela {
   display: flex;
   flex-direction: row;
-  /* width: 100vw; */
+  width: 100vw;
   color: #408087;
-
+  background-color: aliceblue;
+  
 }
+
 
 /* Dashboard ????*/
 .dash{
 width: 80%;
-display: flex;
+display: inherit;
 justify-content: space-between;
 align-items: center;
 padding: 20px;
@@ -67,18 +70,25 @@ margin-bottom: 30px;
   text-align: center;
   color: #408087;
   background-color: transparent;
+
 }
 
 
 .item-regua.altoRisco{
   border: 1px solid;
+  transition: transform 0.3s ease;
+   transform: translateY(-10px);
 }
 
 .item-regua.complicacao{
   border: 1px solid;
+  transition: transform 0.3s ease;
+   transform: translateY(-10px);
 }
-.item-regua.ideal{
+.item-regua.ativa{
   border: 1px solid;
+  transition: transform 0.3s ease;
+   transform: translateY(-10px);
 }
 
 .kpis{

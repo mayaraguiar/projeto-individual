@@ -2,6 +2,7 @@ drop database PI;
 create database PI;
 use PI;
 
+
 create table profissional(
 idProfissional int auto_increment primary key,
 nomeProfissional varchar(45),
@@ -20,8 +21,7 @@ telefone varchar (11)
 
 create table infoGestante(
 idInfoGestante int primary key auto_increment,
-fkGestante int,
-nomeGestante varchar(45), 
+fkGestante int, 
 gesta decimal,
 paridade decimal,
 aborto decimal,
@@ -79,9 +79,11 @@ insert into gestante values
 (default, 'Leidiane', '1996-12-31', '11959477682');
 
 insert into infoGestante values
-(default, 1, 'Ativo', 1, 0, 0, 0, 0, '2024-03-15', '2025-11-25', 'Sim'),
-(default, 2, 'Ativo', 3, 1, 1, 0, 1, '2025-02-09', '2025-02-09', 'Sim'),
-(default, 3, 'Ativo', 1, 0, 1, 0, 0, '2025-04-06', '2025-08-16', 'Não');
+(default, 1,  1, 0, 0, 0, 0, '2024-03-15', '2025-11-25', 'Sim', 'Ativo'),
+(default, 2,  3, 1, 1, 0, 1, '2025-02-09', '2025-02-09', 'Sim', 'Ativo'),
+(default, 3, 1, 0, 1, 0, 0, '2025-04-06', '2025-08-16', 'Não', 'Ativo');
+
+describe infoGestante;
 
 insert into historicoPreNatal values 
 (default, 'Normal', 'Não', 'Sim', '2025-04-15', 1),
@@ -95,7 +97,7 @@ select * from gestante;
  -- Exibir pacientes que estão realizando pré natal ativas (KPI) 
 SELECT COUNT(*) AS totalGestantesAtivas
 FROM infoGestante
-WHERE statusPreNatal = 'Ativo';
+WHERE statusPreNatal = 'Ativo' AND  gestante;
 
  -- Gestantes que estão realizando pré natal de de alto risco (KPI)
  SELECT count(*) as nomeGestante 
@@ -137,4 +139,7 @@ GROUP BY month(dtParto)
 SELECT rnVivo, COUNT(*) AS total
 FROM historicoPreNatal
 GROUP BY rnVivo;
+
+
+select *from profissional ;
 

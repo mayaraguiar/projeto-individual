@@ -4,6 +4,7 @@
   transform: translateX(170%);
   background-color: aliceblue;
   padding: 95px;
-  justify-content: center  ;
+  justify-content: center;
   align-items: center;
+  border: 2px solid #408087;
 } 

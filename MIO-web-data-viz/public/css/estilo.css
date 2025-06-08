@@ -77,11 +77,13 @@ body {
 /* BANNER */
 
 .banner{
-    height: 500px;
-    width: fit-content;
+    height: 100vh;
+    width: 100%;
     display: flex;
     position: absolute;
-    
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
 }
 .conteudo {
   position: relative;
@@ -102,12 +104,11 @@ body {
 /* Alterei tudo .banner .container e o p*/
 
 .banner .container p {
-    width: 490px;
+    width: 480px;
     color: white;
-    font-size: 24px;
+    font-size: 32px;
     text-align: center;
-    margin-left: 200%;
-    
+    margin: 0 auto;
 }
 
 .banner .container span {
@@ -139,6 +140,7 @@ z-index: 0;
   z-index: 1;
   background: linear-gradient(to bottom, #6790954d,lch(64.35% 18.4 208.47 / 0.8));
 }
+
 
 
 /* MISSÃO VISÃO VALORES Mudei tudo */
@@ -204,7 +206,7 @@ z-index: 0;
     align-items: center;
 }
 .boxSobre2{
-    width: 300px;
+    width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -212,8 +214,8 @@ z-index: 0;
     text-align: center;
 }
 .boxSobre2 img {
-    width: 300px;
-    height: 320px;
+    width: 400px;
+
     border-radius: 50px;
 }
 .boxSobre2 h4{
@@ -222,6 +224,7 @@ z-index: 0;
     color: var(--escuro) ;
     
 }
+
 /* FOOTER */
 
 .footer {

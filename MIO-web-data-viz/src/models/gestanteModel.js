@@ -8,16 +8,18 @@
    return database.executar(instrucaoSql);
  }
 
- function cadastrar(nomeGestante, statusPreNatal, gesta, paridade, aborto, numPN, numPC, dum, dpp, altoRisco) {
+
+ function cadastrarGestante(nomeGestante, dtNascimento, telefone) {
   
-   var instrucaoSql = `INSERT INTO  infoGestante (nomeGestante, gesta, paridade, aborto, numPN, numPC, dum, dpp, altoRisco)VALUES ('${nomeGestante}', ${gesta}, ${paridade}, ${aborto}, ${numPN}, ${numPC}, '${dum}', '${dpp}', '${altoRisco}')`;
-
-   console.log("Executando a instrução SQL: \n" + instrucaoSql);
-   return database.executar(instrucaoSql);
+  const instrucaoSql= `INSERT INTO gestante (nomeGestante, dtNascimento, telefone) VALUES ('${nomeGestante}','${dtNascimento}','${telefone}')`;
+  
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  console.log("Gestante cadastrada com sucesso!");
+  
+  return database.executar(instrucaoSql);
  }
-
 
  module.exports = {
    buscarInfoGestante,
-   cadastrar
+   cadastrarGestante 
  } // model controler e rota 

@@ -7,8 +7,7 @@ router.get("/dataProvavelParto", function (req, res) {
     dashController.buscarDataProvavelDoParto(req, res);
 });
 
-//  router.get("//:idAquario", function (req, res) {
-//      medidaController.buscarMedidasEmTempoReal(req, res);
-//  })
+router.get("/qtdPreNatal",)
+
 
 module.exports = router;
