@@ -1,4 +1,4 @@
-var medidaModel = require("../models/dashModel");
+var dashModel = require("../models/dashModel");
 
 function buscarDataProvavelDoParto(req, res) {
 
@@ -8,7 +8,7 @@ function buscarDataProvavelDoParto(req, res) {
 
     console.log(`Recuperando gestantes com Data Provável do Parto dos últimos ${limite_linhas} meses`);
 
-    medidaModel.buscarDataProvavelDoParto(idAquario, limite_linhas).then(function (resultado) {
+    dashModel.buscarDataProvavelDoParto(idAquario, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -22,26 +22,56 @@ function buscarDataProvavelDoParto(req, res) {
 }
 
 
-// function buscarMedidasEmTempoReal(req, res) {
+function buscarGestanteAtiva(req, res) {
 
-//     var idAquario = req.params.idAquario;
 
-//     console.log(`Recuperando medidas em tempo real`);
+    dashModel.buscarGestanteAtiva().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimos resultados.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
-//     medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
-//         if (resultado.length > 0) {
-//             res.status(200).json(resultado);
-//         } else {
-//             res.status(204).send("Nenhum resultado encontrado!")
-//         }
-//     }).catch(function (erro) {
-//         console.log(erro);
-//         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-//         res.status(500).json(erro.sqlMessage);
-//     });
-// }
+function buscarGestanteAtiva(req, res) {
+
+
+    dashModel.buscarGestanteAtiva().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimos resultados.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+function buscarAltoRisco(req, res) {
+
+
+    dashModel.buscarAltoRisco().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimos resultados.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 
 module.exports = {
-    buscarDataProvavelDoParto
-
+    buscarDataProvavelDoParto,
+    buscarGestanteAtiva,
+    buscarAltoRisco
 }

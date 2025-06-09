@@ -11,21 +11,31 @@ function buscarDataProvavelDoParto() { // Modificado para mudar informações
     return database.executar(instrucaoSql);
 }
 
-// function buscarMedidasEmTempoReal(idAquario) {
 
-//     var instrucaoSql = `SELECT 
-//         dht11_temperatura as temperatura, 
-//         dht11_umidade as umidade,
-//                         DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-//                         fk_aquario 
-//                         FROM medida WHERE fk_aquario = ${idAquario} 
-//                     ORDER BY id DESC LIMIT 1`;
+function buscarGestanteAtiva() { // Modificado para mudar informações
 
-//     console.log("Executando a instrução SQL: \n" + instrucaoSql);
-//     return database.executar(instrucaoSql);
-// }
+    var instrucaoSql = ` SELECT COUNT(*) AS totalGestantesAtivas
+                         FROM infoGestante
+
+                         WHERE statusPreNatal = 'Sim';`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function buscarAltoRisco() { // Modificado para mudar informações
+
+    var instrucaoSql = `  SELECT count(*) as nomeGestante 
+                            FROM gestante g
+                            JOIN infoGestante i ON g.idGestante = i.fkGestante
+                            WHERE i.altoRisco = 'Sim';`;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     buscarDataProvavelDoParto,
-    // buscarMedidasEmTempoReal
+    buscarGestanteAtiva,
+    buscarAltoRisco
 }
