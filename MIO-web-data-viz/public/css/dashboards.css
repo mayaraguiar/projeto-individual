@@ -43,7 +43,7 @@ display: inherit;
 justify-content: space-between;
 align-items: center;
 padding: 20px;
-margin-left: 20.1%;
+margin-left: -0.9%;
 flex-direction: column;
 box-sizing: border-box;
 background-color: aliceblue;
@@ -78,12 +78,15 @@ margin-bottom: 30px;
   border: 1px solid;
   transition: transform 0.3s ease;
    transform: translateY(-10px);
+       box-shadow: 5px 5px 5px #3640433e;
+   
 }
 
 .item-regua.complicacao{
   border: 1px solid;
   transition: transform 0.3s ease;
    transform: translateY(-10px);
+       box-shadow: 5px 5px 5px #3640433e;
 }
 .item-regua.ativa{
   border: 1px solid;
@@ -113,7 +116,7 @@ margin-bottom: 30px;
   align-items: center;
   border-right: 3px solid #408087;
   background-color: #408087;
-    background: linear-gradient(to bottom, white,lch(64.35% 18.4 208.47 / 0.8));
+  background: linear-gradient(to bottom, white,lch(64.35% 18.4 208.47 / 0.8));
 
 }
 

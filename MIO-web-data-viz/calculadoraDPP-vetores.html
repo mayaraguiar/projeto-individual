@@ -3,71 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dpp</title>
+    <title>Document</title>
 </head>
 <body>
-<h1>Calculadora DPP</h1>
+    <h2>Conversor de semanas para meses</h2>
+                <div class="formulario">
+                    <div class="campo">
+                        <span>Você está com quantas semanas de gestação?</span>
+                        <input type="number" id="input_semanas" style="width:40px;"><br>
+                    </div>
+                    <button class="botao" onclick="calcular()">Calcular</button>
+                                        <div id="div_mensagem_semanas" ></div>
 
-    Qual foi a data da última menstruação? <br>
-    <input type="number" id="input_dia" style="width: 40px;">
-    <select name="" id="select_mes">
-        <option value="1">Janeiro</option><br>
-        <option value="2">Fevereiro</option><br>
-        <option value="3">Março</option><br>
-        <option value="4">Abril</option><br>
-        <option value="5">Maio</option><br>
-        <option value="6">Junho</option><br>
-        <option value="7">Julho</option><br>
-        <option value="8">Agosto</option><br>
-        <option value="9">Setembro</option><br>
-        <option value="10">Outubro</option><br>
-        <option value="11">Novembro</option><br>
-        <option value="12">Dezembro</option><br>
-    </select>
-    <select name="" id="select_ano">
-        <option value="2024">2024</option>
-        <option value="2025">2025</option>
-
-    </select>
-    <button onclick="ver()">Ver IG</button>
-
-    <div id="div_mensagem"></div>
 </body>
 </html>
 <script>
-    function ver(){
-        var dia = Number(input_dia.value);
-        var mes = Number(select_mes.value);
-        var ano = Number(select_ano.value);
+    function calcular() {
 
-        var mensagem = ''
+        var semanas = Number(input_semanas.value);
+        var mensagem = '';
 
-         if (dia == ''|| mes== ''||ano== '') {
-            alert('Preencha todos os campos corretamente.')
+        if (semanas < 0 || semanas > 43) {
+            alert('Digite uma idade gestacional compatível.');
+
+        }
+        for (var i= 1; i <=9; i++){
+            
+
+
+        }
+        els if (i == 1) {
+            var semanas= 0
+            mensagem = 'Você está com 1 mês.';
+        } else if (semanas <= 8) {
+            mensagem = 'Você está com 2 meses.';
+        } else if (semanas <= 12) {
+            mensagem = 'Você está com 3 meses.';
+        } else if (semanas <= 16) {
+            mensagem = 'Você está com 4 meses.';
+        } else if (semanas <= 21) {
+            mensagem = 'Você está com 5 meses.';
+        } else if (semanas <= 26) {
+            mensagem = 'Você está com 6 meses.';
+        } else if (semanas <= 30) {
+            mensagem = 'Você está com 7 meses.';
+        } else if (semanas <= 35) {
+            mensagem = 'Você está com 8 meses.';
+        } else if (semanas <= 42) {
+            mensagem = 'Você está com 9 meses.';
+        }
+        
+
+        div_mensagem_semanas.innerHTML = `${mensagem}`;
     }
-        var diasNoMes= [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        var meses= ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
-
-        dia= dia+7;
-
-        if (dia > diasNoMes[mes-1]){
-            dia= dia - diasNoMes[mes-1];
-            mes= mes + 1;
-        }
-
-        if (mes <= 3) {
-            var mes = (mes + 9);
-        } else {
-            var mes = (mes - 3);
-            ano = ano + 1;
-        }
-
-        var nomeMes = meses [mes-1]
-
-        div_mensagem.innerHTML= `A data provável do parto (DPP) é ${dia} de ${nomeMes} de ${ano}. `
-
-
-
-
-}
 </script>
+
+    for (var mes = 1; mes <= 9; mes++) {
+        var limite = 0;
+
+        if (mes == 1) limite = 4;
+        else if (mes == 2) limite = 8;
+        else if (mes == 3) limite = 12;
+        else if (mes == 4) limite = 16;
+        else if (mes == 5) limite = 21;
+        else if (mes == 6) limite = 26;
+        else if (mes == 7) limite = 30;
+        else if (mes == 8) limite = 35;
+        else if (mes == 9) limite = 42;
+
+        if (semanas <= limite) {
+            mensagem = Você está com ${mes} mês${mes > 1 ? 'es' : ''}.;
+            break;
+        }
+    }
+
+    div_mensagem_semanas.innerHTML = mensagem;
+} 

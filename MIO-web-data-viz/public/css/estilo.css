@@ -176,6 +176,7 @@ z-index: 0;
     width: 300px;
     height: 320px;
     border-radius: 50px;
+           box-shadow: 5px 5px 5px #3640433e;
 }
 .box h4{
     margin: 0;
@@ -190,6 +191,7 @@ z-index: 0;
     height: 600px;
     width: 100%;
     background-color: #dcdcdc;
+
 }
 .socialSobre2 .container{
     height: inherit;
@@ -197,6 +199,7 @@ z-index: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+           box-shadow: 5px 5px 5px #3640433e;
     
 }
 .boxesSobre2 {
@@ -215,8 +218,9 @@ z-index: 0;
 }
 .boxSobre2 img {
     width: 400px;
-
+       box-shadow: 5px 5px 5px #3640433e;
     border-radius: 50px;
+           box-shadow: 5px 5px 5px #3640433e;
 }
 .boxSobre2 h4{
     margin: 0;
