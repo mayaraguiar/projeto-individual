@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIO Baby | Simulador</title>
+    <title>MIO Baby | Calculadora</title>
 
     <script src="./js/sessao.js"></script>
 
@@ -125,36 +125,35 @@
         div_mensagem_dpp.innerHTML = `A data provável do parto (DPP) é <strong>${dia} de ${nomeMes} de ${ano}</strong>.`;
     }
 
-    function calcular() {
+     function calcular() {
 
         var semanas = Number(input_semanas.value);
         var mensagem = '';
 
         if (semanas < 0 || semanas > 43) {
             alert('Digite uma idade gestacional compatível.');
-
-        } else if (semanas <= 4) {
-            mensagem = 'Você está com 1 mês.';
-        } else if (semanas <= 8) {
-            mensagem = 'Você está com 2 meses.';
-        } else if (semanas <= 12) {
-            mensagem = 'Você está com 3 meses.';
-        } else if (semanas <= 16) {
-            mensagem = 'Você está com 4 meses.';
-        } else if (semanas <= 21) {
-            mensagem = 'Você está com 5 meses.';
-        } else if (semanas <= 26) {
-            mensagem = 'Você está com 6 meses.';
-        } else if (semanas <= 30) {
-            mensagem = 'Você está com 7 meses.';
-        } else if (semanas <= 35) {
-            mensagem = 'Você está com 8 meses.';
-        } else if (semanas <= 42) {
-            mensagem = 'Você está com 9 meses.';
         }
-        
 
-        div_mensagem_semanas.innerHTML = `${mensagem}`;
+            var semanaMes= [
+                {semana:4, mes:1},
+                {semana:8, mes:2},
+                {semana:12, mes:3},
+                {semana:16, mes:4},
+                {semana:21, mes:5},
+                {semana:26, mes:6},
+                {semana:30, mes:7},
+                {semana:35, mes:8},
+                {semana:42, mes:9}
+            ]
+        for (var i= 1; i < semanaMes.length; i++){
+            if(semanas <= semanaMes[i].semana){
+                mensagem= `Você está com ${semanaMes[i].mes} meses. Parabéns!!!`
+                break;
+            }
+        }
+
+        div_mensagem_semanas.innerHTML= `${mensagem}`
+
     }
 </script>
 </body>

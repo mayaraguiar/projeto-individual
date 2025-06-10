@@ -1,5 +1,5 @@
-drop database PI;
-create database PI;
+ drop database PI;
+ create database PI;
 use PI;
 
 
@@ -21,7 +21,7 @@ telefone varchar (11)
 
 create table infoGestante(
 idInfoGestante int primary key auto_increment,
-fkGestante int, 
+fkGestante int,
 gesta decimal,
 paridade decimal,
 aborto decimal,
@@ -30,13 +30,15 @@ numPC decimal,
 dum date,
 dpp date,
 altoRisco varchar(3),
-statusPreNatal varchar (3),
+statusPreNatal varchar (5),
 constraint chkAltoRisco
 		check (altoRisco in ('Sim', 'Não')),
 constraint chkStatus
-		check (statusPreNatal in ('Ativo', 'Inativo')),
+		check (statusPreNatal in ('Sim', 'Não')),
 constraint fk_InfoGestante foreign key (fkGestante)
 		references gestante (idGestante));
+
+
 
 create table consulta(
 idConsulta int, 
@@ -66,7 +68,7 @@ constraint chkRnVivo
 		check (rnVivo in ('Sim', 'Não'))
 );
  
- 
+
  insert into profissional values
  ( default, 'Samia', 'samia@email.com', 'Zamj123','bje'),
 ( default, 'Aline', 'aline@email.com', 'Zamj124','bje'),
@@ -74,30 +76,82 @@ constraint chkRnVivo
 
 
 insert into gestante values
-(default, 'Thamires', '1996-11-25', '11959477652'),
-(default, 'Juliana', '1990-05-02', '11959477656'),
-(default, 'Leidiane', '1996-12-31', '11959477682');
+(default, 'Ana Clara', '1994-03-21', '11999998888'),
+(default, 'Beatriz Souza', '1991-07-14', '11988887777'),
+(default, 'Camila Rocha', '1993-12-01', '11977776666'),
+(default, 'Daniela Lima', '1989-09-20', '11966665555'),
+(default, 'Elaine Moraes', '1995-05-10', '11955554444'),
+(default, 'Fernanda Alves', '1992-10-05', '11944443333'),
+(default, 'Gisele Martins', '1996-02-28', '11933332222'),
+(default, 'Helena Ramos', '1990-06-18', '11922221111'),
+(default, 'Isabela Freitas', '1997-04-23', '11911110000'),
+(default, 'Juliana Tavares', '1993-01-17', '11900009999'),
+(default, 'Karen Silva', '1998-08-30', '11888889999'),
+(default, 'Laura Castro', '1995-11-11', '11877778888'),
+(default, 'Marina Dias', '1991-03-03', '11866667777'),
+(default, 'Natália Teixeira', '1992-12-25', '11855556666'),
+(default, 'Olívia Prado', '1994-09-09', '11844445555'),
+(default, 'Patrícia Leal', '1988-07-07', '11833334444'),
+(default, 'Queila Fonseca', '1990-05-02', '11822223333'),
+(default, 'Renata Borges', '1996-10-16', '11811112222'),
+(default, 'Sabrina Farias', '1993-04-12', '11800001111'),
+(default, 'Tatiane Costa', '1997-06-08', '11799998888');
 
 insert into infoGestante values
-(default, 1,  1, 0, 0, 0, 0, '2024-03-15', '2025-11-25', 'Sim', 'Ativo'),
-(default, 2,  3, 1, 1, 0, 1, '2025-02-09', '2025-02-09', 'Sim', 'Ativo'),
-(default, 3, 1, 0, 1, 0, 0, '2025-04-06', '2025-08-16', 'Não', 'Ativo');
+(default, 1, 2, 1, 0, 0, 1, '2025-03-01', '2025-12-08', 'Sim', 'Não'),
+(default, 2, 3, 1, 1, 1, 0, '2025-01-15', '2025-09-22', 'Não', 'Sim'),
+(default, 3, 1, 0, 1, 0, 0, '2025-02-12', '2025-10-19', 'Sim', 'Sim'),
+(default, 4, 2, 1, 0, 1, 1, '2025-04-01', '2026-01-08', 'Sim', 'Sim'),
+(default, 5, 3, 0, 1, 0, 0, '2025-03-22', '2025-12-29', 'Não', 'Sim'),
+(default, 6, 2, 1, 1, 1, 1, '2025-05-10', '2026-02-17', 'Sim', 'Sim'),
+(default, 7, 1, 0, 0, 0, 1, '2025-04-05', '2026-01-12', 'Sim', 'Não'),
+(default, 8, 3, 1, 1, 1, 0, '2025-01-01', '2025-09-08', 'Sim', 'Sim'),
+(default, 9, 1, 0, 0, 0, 0, '2025-02-20', '2025-10-27', 'Não', 'Não'),
+(default, 10, 2, 0, 1, 0, 1, '2025-03-18', '2025-12-25', 'Sim', 'Sim'),
+(default, 11, 1, 1, 0, 1, 0, '2025-05-03', '2026-02-10', 'Sim', 'Sim'),
+(default, 12, 2, 1, 1, 0, 1, '2025-02-02', '2025-11-09', 'Não', 'Sim'),
+(default, 13, 1, 0, 0, 0, 0, '2025-04-10', '2025-01-17', 'Sim', 'Não'),
+(default, 14, 2, 1, 0, 1, 1, '2025-03-12', '2025-12-19', 'Sim', 'Sim'),
+(default, 15, 3, 0, 1, 1, 1, '2025-01-28', '2025-11-04', 'Não', 'Sim'),
+(default, 16, 1, 0, 1, 0, 0, '2025-04-18', '2026-01-26', 'Sim', 'Não'),
+(default, 17, 2, 1, 0, 0, 1, '2025-02-22', '2025-10-29', 'Sim', 'Sim'),
+(default, 18, 3, 1, 1, 1, 1, '2025-03-15', '2026-12-22', 'Sim', 'Sim'),
+(default, 19, 1, 0, 0, 1, 0, '2025-05-20', '2026-02-27', 'Não', 'Sim'),
+(default, 20, 2, 1, 1, 0, 0, '2025-04-01', '2026-01-08', 'Sim', 'Sim');
 
-describe infoGestante;
+select * from infoGestante;
+select * from gestante;
 
 insert into historicoPreNatal values 
-(default, 'Normal', 'Não', 'Sim', '2025-04-15', 1),
-(default, 'Cesárea', 'Sim', 'Sim', '2025-02-08', 2),
-(default, 'Normal', 'Sim', 'Sim', '2025-02-04', 2),
-(default, 'Normal', 'Não', 'Sim', '2025-01-05', 3),
-(default, 'Cesárea', 'Sim', 'Sim', '2025-03-22', 1);
+(default, 'Normal', 'Não', 'Sim', '2025-04-05', 4),
+(default, 'Cesárea', 'Sim', 'Sim', '2025-05-10', 4),
+(default, 'Normal', 'Sim', 'Sim', '2025-02-12', 5),
+(default, 'Cesárea', 'Não', 'Sim', '2025-03-18', 5),
+(default, 'Normal', 'Sim', 'Sim', '2025-04-22', 6),
+(default, 'Normal', 'Sim', 'Sim', '2025-05-20', 7),
+(default, 'Cesárea', 'Não', 'Não', '2025-01-25', 8),
+(default, 'Normal', 'Sim', 'Sim', '2025-03-12', 9),
+(default, 'Normal', 'Não', 'Sim', '2025-04-30', 10),
+(default, 'Cesárea', 'Sim', 'Sim', '2025-02-17', 11),
+(default, 'Normal', 'Sim', 'Sim', '2025-05-04', 12),
+(default, 'Normal', 'Sim', 'Não', '2025-04-19', 13),
+(default, 'Cesárea', 'Não', 'Sim', '2025-02-28', 14),
+(default, 'Normal', 'Sim', 'Sim', '2025-03-25', 15),
+(default, 'Normal', 'Sim', 'Sim', '2025-01-15', 16),
+(default, 'Cesárea', 'Não', 'Sim', '2025-04-10', 17),
+(default, 'Normal', 'Sim', 'Sim', '2025-03-22', 18),
+(default, 'Cesárea', 'Sim', 'Sim', '2025-02-09', 19),
+(default, 'Normal', 'Não', 'Sim', '2025-04-01', 20),
+(default, 'Normal', 'Sim', 'Sim', '2025-05-15', 21),
+(default, 'Cesárea', 'Sim', 'Sim', '2025-01-10', 22),
+(default, 'Normal', 'Não', 'Sim', '2025-03-28', 23);
 
 select * from gestante;
 
  -- Exibir pacientes que estão realizando pré natal ativas (KPI) 
 SELECT COUNT(*) AS totalGestantesAtivas
 FROM infoGestante
-WHERE statusPreNatal = 'Ativo' AND  gestante;
+WHERE statusPreNatal = 'Ativo' ;
 
  -- Gestantes que estão realizando pré natal de de alto risco (KPI)
  SELECT count(*) as nomeGestante 
@@ -116,7 +170,7 @@ FROM historicoPreNatal
 WHERE complicacoes = 'Não'
   AND dtParto >= '2024-05-24';
 
-
+use pi;
  
  -- Gestante com DPP para cada mês do ano -- barra
  SELECT MONTH(dpp) AS mes, COUNT(*) AS total
@@ -142,4 +196,8 @@ GROUP BY rnVivo;
 
 
 select *from profissional ;
+
+select * from infoGestante;
+
+
 

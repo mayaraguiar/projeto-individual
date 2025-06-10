@@ -286,6 +286,8 @@ z-index: 0;
   flex-direction: column;
   height: fit-content;
   padding: 20px 0;
+      border: 0cqb;
+           box-shadow: 5px 5px 5px #3640433e;
 }
 
 .card h2 {

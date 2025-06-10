@@ -25,57 +25,28 @@
 
         if (semanas < 0 || semanas > 43) {
             alert('Digite uma idade gestacional compatível.');
-
         }
-        for (var i= 1; i <=9; i++){
-            
 
-
+            var semanaMes= [
+                {semana:4, mes:1},
+                {semana:8, mes:2},
+                {semana:12, mes:3},
+                {semana:16, mes:4},
+                {semana:21, mes:5},
+                {semana:26, mes:6},
+                {semana:30, mes:7},
+                {semana:35, mes:8},
+                {semana:42, mes:9}
+            ]
+        for (var i= 1; i < semanaMes.length; i++){
+            if(semanas <= semanaMes[i].semana){
+                mensagem= `Você está com ${semanaMes[i].mes} meses. Parabéns!!!`
+                break;
+            }
         }
-        els if (i == 1) {
-            var semanas= 0
-            mensagem = 'Você está com 1 mês.';
-        } else if (semanas <= 8) {
-            mensagem = 'Você está com 2 meses.';
-        } else if (semanas <= 12) {
-            mensagem = 'Você está com 3 meses.';
-        } else if (semanas <= 16) {
-            mensagem = 'Você está com 4 meses.';
-        } else if (semanas <= 21) {
-            mensagem = 'Você está com 5 meses.';
-        } else if (semanas <= 26) {
-            mensagem = 'Você está com 6 meses.';
-        } else if (semanas <= 30) {
-            mensagem = 'Você está com 7 meses.';
-        } else if (semanas <= 35) {
-            mensagem = 'Você está com 8 meses.';
-        } else if (semanas <= 42) {
-            mensagem = 'Você está com 9 meses.';
-        }
-        
 
-        div_mensagem_semanas.innerHTML = `${mensagem}`;
+        div_mensagem_semanas.innerHTML= `${mensagem}`
+
+
     }
 </script>
-
-    for (var mes = 1; mes <= 9; mes++) {
-        var limite = 0;
-
-        if (mes == 1) limite = 4;
-        else if (mes == 2) limite = 8;
-        else if (mes == 3) limite = 12;
-        else if (mes == 4) limite = 16;
-        else if (mes == 5) limite = 21;
-        else if (mes == 6) limite = 26;
-        else if (mes == 7) limite = 30;
-        else if (mes == 8) limite = 35;
-        else if (mes == 9) limite = 42;
-
-        if (semanas <= limite) {
-            mensagem = Você está com ${mes} mês${mes > 1 ? 'es' : ''}.;
-            break;
-        }
-    }
-
-    div_mensagem_semanas.innerHTML = mensagem;
-} 
